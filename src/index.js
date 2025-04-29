@@ -7,4 +7,3 @@ import project from "./modules/project.js";
 //Menu switching logic will go here.
 
 const projectManage = project();
-

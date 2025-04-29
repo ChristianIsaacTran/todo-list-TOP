@@ -98,11 +98,12 @@ body {
     list-style: none;
 }
 
-.nav-link li:hover::before {
+.nav-link a:hover::before {
     content: "🖝";
     position: absolute;
     left: 70px;
     font-size: 1.7rem;
+    text-shadow: var(--white-font-text-shadow);
 }
 
 .nav-link li {
