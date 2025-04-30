@@ -39,7 +39,7 @@ function TodayQuest() {
         const changeQuestButton = document.createElement("button");
 
         //add attributes and content
-        projectName.textContent = "(Placeholder project name)";
+        projectName.textContent = "(Placeholder project name)"; //Project name placeholder
         projHeaderButtons.setAttribute("class", "project-header-buttons");
         changeProjNameButton.setAttribute("class", "change-proj-name");
         changeProjNameButton.textContent = "Edit Project";
@@ -55,7 +55,40 @@ function TodayQuest() {
 
     function generateTodoCard(todoContainer) {
         const todoCard = document.createElement("div");
+        const cardLeft = document.createElement("div");
+        const cardRight = document.createElement("div");
+        const completeButton = document.createElement("button");
+        const todoTitle = document.createElement("p");
+        const todoDueDate = document.createElement("p");
+        const editButton = document.createElement("button");
+        const removeButton = document.createElement("button");
 
+        //add attributes and content
+        todoCard.setAttribute("class", "todo-card");
+        cardLeft.setAttribute("class", "card-left");
+        cardRight.setAttribute("class", "card-right");
+        completeButton.setAttribute("class", "todo-complete");
+        completeButton.textContent = "Complete";
+        todoTitle.setAttribute("class", "todo-title");
+        todoTitle.textContent = "Todo 1"; //todo name placeholder
+        todoDueDate.setAttribute("class", "todo-due-date");
+        todoDueDate.textContent = "2/3/2025"; //Date placeholder
+        editButton.setAttribute("class", "todo-edit-button");
+        editButton.textContent = "Edit";
+        removeButton.setAttribute("class", "todo-remove-button");
+        removeButton.textContent = "Remove";
+
+        //Construct HTML elements
+        cardLeft.appendChild(completeButton);
+        cardLeft.appendChild(todoTitle);
+        cardLeft.appendChild(todoDueDate);
+        cardRight.appendChild(editButton);
+        cardRight.appendChild(removeButton);
+        todoCard.appendChild(cardLeft);
+        todoCard.appendChild(cardRight);
+
+        //Add card to todo container
+        todoContainer.appendChild(todoCard);
     }
 
     return {generateTodayQuest};
