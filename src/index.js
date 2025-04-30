@@ -11,5 +11,5 @@ const projectManage = project();
 const todoManage = todo();
 
 // projectManage.createProject("new project 1");
-todoManage.createTodo("do laundry 2", "Do all of the laundry in my room", "1/1/25", "medium", "new project 1");
-// todoManage.getTodo("do laundry", "new project 2");
+// todoManage.createTodo("do laundry 2", "Do all of the laundry in my room", "1/1/25", "medium", "new project 1");
+// console.log(todoManage.getTodo("do laundry 2", "new project 1"));

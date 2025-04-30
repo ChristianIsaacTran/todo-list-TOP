@@ -21,20 +21,28 @@ function todo() {
                 return console.log("Todo already exists for this project!")
             }
         }
-        
+
         //If it doesn't exist, then add it to the todo list of the given project
         projectManage.addTodoToProject(projName, tempTodo);
     }
 
-    //get all todo objects
+    //get specific todo from a specific project
     function getTodo(titleName, projName) {
         //get the project that todo is in
-        // const projectManage = project();
-        // const tempProj = projectManage.getProject(projName);
-        // console.log(tempProj);
+        const projectManage = project();
+        const tempProj = projectManage.getProject(projName);
+        console.log(tempProj);
+        //Search for todo from todos array
+        for(let todoObj of tempProj.todos) {
+            if(todoObj.title === titleName){
+                return todoObj; //If todo is found, then return the object
+            }
+        }
+
+        return console.log("Todo is not found within this project");
     }
 
-    return { createTodo, getTodo };
+    return { createTodo, getTodo }; 
 }
 
 export default todo; 
