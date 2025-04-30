@@ -8,9 +8,18 @@ import  ProjectAndTodo from "./modules/ProjectAndTodo.js";
 
 const appManage = ProjectAndTodo();
 
-// appManage.createTodo("do laundry 3 ", "weewfwf", "21312", "dwqqd", "new project 1");
-// console.log(appManage.getTodo("do laundry 2103", "new project 3"));
+// appManage.createProject("new project 1");
+// appManage.createTodo("do laundry 3", "I have to do laundry", "1/1/1", "high", "new project 1");
 
-// appManage.removeTodo("do laundry", "new project 1");
-appManage.createTodo("bruh 3", "dwqwq", "1/1/2", "dwqqd", "new project 1");
-appManage.viewProject("new project 1");
+// appManage.removeTodo("fwefw", "new project 1");
+
+// appManage.updateProjectName("new project 1", "new project 2");
+
+// appManage.getProject("new project 1");
+
+// appManage.getTodo("do laundry 2", "new project 2");
+
+// appManage.updateTodo("do laundry 2", "new project 2", "new task", "new task", "new task", "new task");
+
+// appManage.viewProject("new project 2");
+
