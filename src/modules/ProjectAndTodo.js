@@ -66,6 +66,16 @@ function ProjectAndTodo() {
 
     }
 
+    function viewProject (projName) {
+        const tempProj = getProject(projName);
+        if(!tempProj) {
+            return console.log("Project doesn't exist");
+        }
+
+        console.log(`Name of Project: ${tempProj.name} \n Todos: ${tempProj.todos}`);
+    }
+
+    //utility function to replace an existing project with the new modified given project (projObj)
     function updateProjectAll(key, projObj) {
         //Takes an object and a given key value for a localStorage item, and overwrites the localStorage item with the object
         if (!localStorage.getItem(key)) { //Check if project exists first
@@ -140,7 +150,8 @@ function ProjectAndTodo() {
     }
 
 
-    return { createProject, removeProject, getProject, updateProjectName, createTodo, getTodo, removeTodo };
+
+    return { createProject, removeProject, getProject, updateProjectName, viewProject, createTodo, getTodo, removeTodo};
 }
 
 export default ProjectAndTodo;
