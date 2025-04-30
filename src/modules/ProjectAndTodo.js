@@ -1,12 +1,7 @@
-
-
 /*
-Projects are going to be our "folder" to hold all of our 
-todos for that specific project. 4 functionalities:
-1. create a project
-2. edit a project
-3. delete a project
-4. update a project's name
+Updated ProjectsAndTodos into one module since it didn't 
+make any sense to separate todos since todos are inside the project 
+object.
 */
 function ProjectAndTodo() {
 
