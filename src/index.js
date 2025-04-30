@@ -1,15 +1,14 @@
 import "./style.css";
-import project from "./modules/project.js";
-import todo from "./modules/todo.js";
+import  ProjectAndTodo from "./modules/ProjectAndTodo.js";
 
 //The entry point of the project. Import module 
 //pages here.
 
 //Menu switching logic will go here.
 
-const projectManage = project();
-const todoManage = todo();
+const appManage = ProjectAndTodo();
 
-// projectManage.createProject("new project 1");
-// todoManage.createTodo("do laundry 2", "Do all of the laundry in my room", "1/1/25", "medium", "new project 1");
-// console.log(todoManage.getTodo("do laundry 2", "new project 1"));
+// appManage.createTodo("do laundry 3 ", "weewfwf", "21312", "dwqqd", "new project 1");
+// console.log(appManage.getTodo("do laundry 2103", "new project 3"));
+
+appManage.removeTodo("do laundry", "new project 1");
