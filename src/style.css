@@ -121,3 +121,56 @@ body {
 .nav-link a:hover {
     text-shadow: 1px 0 8px yellow;
 }
+
+.today-quest-header {
+    margin: 30px;
+}
+
+.project-container {
+    padding: 0 100px;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.project-header > h2 {
+    font-size: 2rem;
+}
+
+.project-header-buttons {
+    display: flex;
+    gap: 40px;
+}
+
+.todo-container {
+    display: flex; 
+    flex-direction: column;
+    border: var(--section-border);
+    border-radius: var(--round-border);
+    box-shadow: var(--inside-shadow);
+    padding: 40px;
+    gap: 30px;
+}
+
+.todo-card {
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.card-left {
+    display: flex;
+    gap: 30px;
+}
+
+.card-left p {
+    font-size: 1.5rem;
+}
+
+.card-right {
+    display: flex;
+    gap: 10px;
+}
