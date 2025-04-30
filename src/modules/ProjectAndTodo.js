@@ -43,12 +43,6 @@ function ProjectAndTodo() {
         }
     }
 
-    function addTodoToProject(projName, todo) {
-        const tempProj = getProject(projName); //get the requested project
-        tempProj.todos.push(todo); //push todo into the project
-        localStorage.setItem(projName, JSON.stringify(tempProj)); //Convert to JSON and re-add it to project in localStorage
-    }
-
     function updateProjectName(key, givenName) {
 
         //Check if the givenName already exists within the localStorage 
@@ -104,7 +98,10 @@ function ProjectAndTodo() {
         }
 
         //If it doesn't exist, then add it to the todo list of the given project
-        addTodoToProject(projName, tempTodo);
+        tempProj.todos.push(tempTodo);
+        localStorage.setItem(projName, JSON.stringify(tempProj));
+
+
     }
 
     function getTodo(titleName, projName) {
@@ -134,7 +131,7 @@ function ProjectAndTodo() {
             if (tempProj.todos[i].title === titleName) {
                 //Finds todo with index and removes it 
                 tempProj.todos.splice(i, 1);
-                updateProjectAll(projName, tempProj);
+                updateProjectAll(projName, tempProj); //Overwrites existing project with tempProj to reflect todo array deletion
                 return console.log("removed todo from project");
             }
         }
@@ -143,7 +140,7 @@ function ProjectAndTodo() {
     }
 
 
-    return { createProject, removeProject, getProject, updateProjectName, addTodoToProject, createTodo, getTodo, removeTodo };
+    return { createProject, removeProject, getProject, updateProjectName, createTodo, getTodo, removeTodo };
 }
 
 export default ProjectAndTodo;
