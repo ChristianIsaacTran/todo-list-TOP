@@ -12,4 +12,5 @@ const appManage = ProjectAndTodo();
 // console.log(appManage.getTodo("do laundry 2103", "new project 3"));
 
 // appManage.removeTodo("do laundry", "new project 1");
-// appManage.createTodo("bruh 1", "dwqwq", "dwqqwd", "dwqqd", "new project 1");
+appManage.createTodo("bruh 3", "dwqwq", "1/1/2", "dwqqd", "new project 1");
+appManage.viewProject("new project 1");

@@ -72,7 +72,10 @@ function ProjectAndTodo() {
             return console.log("Project doesn't exist");
         }
 
-        console.log(`Name of Project: ${tempProj.name} \n Todos: ${tempProj.todos}`);
+        console.log(`Name of Project: ${tempProj.name} \n Todos: `);
+        for(let todoObj of tempProj.todos) {
+            console.log(`title of todo: ${todoObj.title} | due date: ${todoObj.dueDate}\n`);
+        }
     }
 
     //utility function to replace an existing project with the new modified given project (projObj)
@@ -149,9 +152,13 @@ function ProjectAndTodo() {
         return console.log("Todo is not found within this project");
     }
 
+    function updateTodo(titleName, projName) {
+        //Work on this tomorrow
+    }
 
 
-    return { createProject, removeProject, getProject, updateProjectName, viewProject, createTodo, getTodo, removeTodo};
+
+    return {createProject, removeProject, getProject, updateProjectName, viewProject, createTodo, getTodo, removeTodo, updateTodo};
 }
 
 export default ProjectAndTodo;
