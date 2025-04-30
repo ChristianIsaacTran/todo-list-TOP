@@ -27,3 +27,31 @@ This is a template repository for myself with the sole purpose of creating futur
 -- Add additional library to help:
     1. date-fns library to help format dates and times
     2. No data storage yet, so we can store data locally to the user's computer with localStorage. Uses JSON to send and store data.
+
+Modules:
+
+ProjectAndTodo.js - 
+    -- Main behind the scenes logic for creating projects, which are folders in which todos will reside inside, and todos themselves 
+    to add to the chosen project. 
+    Functionalities: 
+        -- createProject(projName): creates a new project object and assigns the projName as the object name, and the key name in localStorage.
+        
+        -- removeProject(projName): removes a project from localStorage by using the projName/key in localStorage.
+
+        -- getProject(projName): used to get a project from localStorage and returns a project object by parsing the JSON.
+
+        -- updateProjectName(prevName, replaceName): used to update the project's name and also it's key as well in localStorage.
+
+        -- viewProject(projName): displays the given project's name, and the todos under the project in the console.
+
+        -- updateProjectAll(key, projObj): this is a utility function that is unexposed. Used to overwrite a localStorage key/value with another given JSON.
+
+        -- createTodo(title, description, dueDate, priority, projName): creates a new todo object with the specified properties. Pushes the todo in the project todo array.
+
+        -- getTodo(titleName, projName): gets the specified todo object from the specified project.
+
+        -- removeTodo(titleName, projName): removes a todo from the project's todo array. Need to specify both what project to remove todo from, and the todo to be removed.
+
+        -- updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority): given a todo that you want to replace and the project that it's in, it will replace the todo in the project's todo array with the new todo specified with new properties.
+
+    **All project/todo functions check if either the todo/project even exists. Will send a console.log if it is successful or not**

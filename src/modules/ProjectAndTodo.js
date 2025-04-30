@@ -45,21 +45,21 @@ function ProjectAndTodo() {
         }
     }
 
-    function updateProjectName(key, givenName) {
+    function updateProjectName(prevName, replaceName) {
 
-        //Check if the givenName already exists within the localStorage 
-        if (localStorage.getItem(givenName)) {
+        //Check if the replaceName already exists within the localStorage 
+        if (localStorage.getItem(replaceName)) {
             return console.log("The project name already exists!, updateProjectName unsuccessful")
         }
 
         //Check if key even exists
-        if (localStorage.getItem(key)) {
+        if (localStorage.getItem(prevName)) {
             /*Parse, then create a new object, then create a new key/value pair in localStorage
             while also removing the previous existing item*/
-            const tempProj = JSON.parse(localStorage.getItem(key));
-            tempProj.name = givenName;
-            localStorage.setItem(givenName, JSON.stringify(tempProj));
-            removeProject(key);
+            const tempProj = JSON.parse(localStorage.getItem(prevName));
+            tempProj.name = replaceName;
+            localStorage.setItem(replaceName, JSON.stringify(tempProj));
+            removeProject(prevName);
             return console.log("updateProjectName successful");
         }
 
