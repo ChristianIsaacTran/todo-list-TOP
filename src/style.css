@@ -201,7 +201,8 @@ dialog {
 }
 
 .cancel-button,
-.submit-button {
+.submit-button,
+button {
     font-size: 1.5rem;
     padding: 5px 30px;
     border-radius: var(--round-button);
@@ -210,18 +211,18 @@ dialog {
     text-shadow: var(--button-font-text-shadow);
 }
 
-.button-pointer-cancel:hover::before {
+.button-pointer-cancel:hover::before,
+.button-pointer-submit:hover::before {
     content: "🖝";
     position: absolute;
-    left: 240px;
     font-size: 1.7rem;
     text-shadow: var(--white-font-text-shadow);
 }
 
-.button-pointer-submit:hover::before {
-    content: "🖝";
-    position: absolute;
-    left: 445px;
-    font-size: 1.7rem;
-    text-shadow: var(--white-font-text-shadow);
+.button-pointer-cancel:hover::before{
+    left: 375px;
+}
+
+.button-pointer-submit:hover::before{
+    left: 582px;
 }

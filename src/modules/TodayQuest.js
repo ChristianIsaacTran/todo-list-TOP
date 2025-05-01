@@ -21,10 +21,6 @@ function TodayQuest() {
         projectHeader.setAttribute("class", "project-header");
         todoContainer.setAttribute("class", "todo-container");
 
-
-        //Generate html modals for edit/change options
-        generateChangeProjNameModal();
-
         /*
         Checks if localStorage is empty and dynamically creates/displays projects depending on if it is empty
         1. if localStorage is empty = create a default project to display
@@ -37,6 +33,9 @@ function TodayQuest() {
         for (let todo of tempProj.todos) {
             generateTodoCard(todoContainer, todo);
         }
+
+        //Generate html modals for edit/change options
+        generateChangeProjNameModal(projectContainer, tempProj);
 
 
         //Construct main container
@@ -70,14 +69,79 @@ function TodayQuest() {
         projectHeader.appendChild(projHeaderButtons);
     }
 
-    function generateChangeProjNameModal() {
+    function generateChangeProjNameModal(projectContainer, tempProj) {
         const dialog = document.createElement("dialog");
+        const form = document.createElement("form");
+        const modalInputsContainer = document.createElement("div");
+        const projNameLabel = document.createElement("label");
+        const projNameInput = document.createElement("input");
+        const modalButtonContainer = document.createElement("div");
+        const cancelButton = document.createElement("button");
+        const submitButton = document.createElement("button");
+        const buttonPointerCancel = document.createElement("div");
+        const buttonPointerSubmit = document.createElement("div");
+
+        //add attributes and content
+        dialog.setAttribute("class", "change-project-name-modal");
+        form.setAttribute("class", "change-project-name-form");
+        modalInputsContainer.setAttribute("class", "changeP-modal-inputs");
+        projNameLabel.setAttribute("for", "new-proj-name");
+        projNameLabel.textContent = "Enter new project name:";
+        projNameInput.setAttribute("id", "new-proj-name");
+        projNameInput.setAttribute("type", "text");
+        projNameInput.setAttribute("name", "projTitle");
+        projNameInput.setAttribute("autofocus", "");
+        modalButtonContainer.setAttribute("class", "changeP-modal-buttons");
+        buttonPointerCancel.setAttribute("class", "button-pointer-cancel");
+        buttonPointerSubmit.setAttribute("class", "button-pointer-submit");
+        cancelButton.setAttribute("type", "button");
+        cancelButton.setAttribute("class", "cancel-button");
+        cancelButton.textContent = "Cancel";
+        submitButton.setAttribute("type", "submit");
+        submitButton.setAttribute("class", "submit-button");
+        submitButton.textContent = "Submit";
+
+        //button events
+        cancelButton.addEventListener("click", function() {
+            dialog.close();
+        });
+        submitButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            const appManage = ProjectAndTodo();
+            const modalData = new FormData(form);
+
+            //USE FORM DATA TO UPDATE PROJECT NAME
+            appManage.updateProjectName(tempProj.name, modalData.get("projTitle"));
+
+            //remove content THEN re-render page
+            removeTodayQuestPage();
+            generateTodayQuest();
+
+            dialog.close();
+        });
+
+
+
+        //Build HTML
+        modalInputsContainer.appendChild(projNameLabel);
+        modalInputsContainer.appendChild(projNameInput);
+        buttonPointerCancel.appendChild(cancelButton);
+        buttonPointerSubmit.appendChild(submitButton);
+        modalButtonContainer.appendChild(buttonPointerCancel);
+        modalButtonContainer.appendChild(buttonPointerSubmit);
+        form.appendChild(modalInputsContainer);
+        form.appendChild(modalButtonContainer);
+        dialog.appendChild(form);
+
+        //Append modal to project container
+        projectContainer.appendChild(dialog);
     }
 
 
     function changeProjNameHandler() {
-        const appManage = ProjectAndTodo();
         //Open a modal for options
+        const dialog = document.querySelector(".change-project-name-modal");
+        dialog.showModal();
     }
 
     
@@ -133,6 +197,17 @@ function TodayQuest() {
         return appManage.getFirstProject();
 
         
+    }
+
+    //Utility function to remove entire page. Used to help with re-rendering
+    function removeTodayQuestPage() {
+        //query header and project-container and remove them to wipe page
+        const todayQuestHeader = document.querySelector(".today-quest-header");
+        const projectContainer = document.querySelector(".project-container");
+
+        //remove entire page from DOM
+        todayQuestHeader.remove();  
+        projectContainer.remove();
     }
 
     return { generateTodayQuest };
