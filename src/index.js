@@ -11,6 +11,10 @@ const appManage = ProjectAndTodo();
 
 // appManage.createProject("project 6");
 
+// appManage.createTodo("new todo 2", "dqwdwq", "dqqdw", "dwqq", "project 1");
+
+// appManage.updateTodo("Default Todo", "project 1", "new todo 3", "fewfew", "fweefw", "fewfew");
+
 const todayQuestPage = TodayQuest();
 
 todayQuestPage.generateTodayQuest();

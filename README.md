@@ -73,3 +73,7 @@ ProjectAndTodo.js -
     remove: completely removes the todo from the project.
 
     ** (not made yet) view: will let the user view the entire selected todo in detail, probably through a modal.
+
+
+-- Note to self: the updated localStorage items that we update/replace, both projects and todos, are .push() or appended to the 
+end of the localStorage/todo array. If I need to stay on the same item after updating it, make sure to parse the END of the lists/arrays.

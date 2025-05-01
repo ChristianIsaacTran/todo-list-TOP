@@ -117,7 +117,8 @@ function ProjectAndTodo() {
         //add new todo to project in local storage, IF there isnt an exact named todo in the project already
         const tempProj = getProject(projName);
         if (!tempProj) {
-            return console.log("Project doesn't exist, createTodo not successful")
+            console.log("Project doesn't exist, createTodo not successful")
+            return false;
         }
         //Check if the exact todo already exists for the selected project
         for (let todoObj of tempProj.todos) {
