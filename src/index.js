@@ -7,10 +7,13 @@ import TodayQuest from "./modules/TodayQuest.js";
 
 //Menu switching logic will go here.
 
-// const appManage = ProjectAndTodo();
+const appManage = ProjectAndTodo();
+
+
 const todayQuestPage = TodayQuest();
 
 todayQuestPage.generateTodayQuest();
+
 
 
 

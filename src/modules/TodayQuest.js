@@ -4,7 +4,7 @@ import ProjectAndTodo from "./ProjectAndTodo.js";
 //Generate Today Quest content
 
 function TodayQuest() {
-    
+
     //Main generation function
     function generateTodayQuest() {
         //Generate base containers
@@ -20,8 +20,20 @@ function TodayQuest() {
         projectContainer.setAttribute("class", "project-container");
         projectHeader.setAttribute("class", "project-header");
         todoContainer.setAttribute("class", "todo-container");
-        generateProjHeader(projectHeader);
-        generateTodoCard(todoContainer);
+
+
+        /*
+        Checks if localStorage is empty and dynamically creates/displays projects depending on if it is empty
+        1. if localStorage is empty = create a default project to display
+        2. if localStorage is full = display the first project from localStorage
+        */
+        const tempProj = checkLocalStorageEmpty();
+
+        generateProjHeader(projectHeader, tempProj);
+
+        for (let todo of tempProj.todos) {
+            generateTodoCard(todoContainer, todo);
+        }
 
 
         //Construct main container
@@ -29,23 +41,23 @@ function TodayQuest() {
         projectContainer.appendChild(todoContainer);
         contentContainer.appendChild(todayQuestHeader);
         contentContainer.appendChild(projectContainer);
-        
+
     }
 
-    function generateProjHeader(projectHeader) {
+    function generateProjHeader(projectHeader, tempProj) {
         const projectName = document.createElement("h2");
         const projHeaderButtons = document.createElement("div");
         const changeProjNameButton = document.createElement("button");
         const changeQuestButton = document.createElement("button");
 
         //add attributes and content
-        projectName.textContent = "(Placeholder project name)"; //Project name placeholder
+        projectName.textContent = tempProj.name; //Project name placeholder
         projHeaderButtons.setAttribute("class", "project-header-buttons");
         changeProjNameButton.setAttribute("class", "change-proj-name");
         changeProjNameButton.textContent = "Edit Project";
         changeQuestButton.setAttribute("class", "change-quest-button");
         changeQuestButton.textContent = "Change Quest";
-         
+
         //Construct the HTML elements together
         projHeaderButtons.appendChild(changeProjNameButton);
         projHeaderButtons.appendChild(changeQuestButton);
@@ -53,7 +65,7 @@ function TodayQuest() {
         projectHeader.appendChild(projHeaderButtons);
     }
 
-    function generateTodoCard(todoContainer) {
+    function generateTodoCard(todoContainer, todoObj) {
         const todoCard = document.createElement("div");
         const cardLeft = document.createElement("div");
         const cardRight = document.createElement("div");
@@ -70,9 +82,9 @@ function TodayQuest() {
         completeButton.setAttribute("class", "todo-complete");
         completeButton.textContent = "Complete";
         todoTitle.setAttribute("class", "todo-title");
-        todoTitle.textContent = "Todo 1"; //todo name placeholder
+        todoTitle.textContent = todoObj.title; 
         todoDueDate.setAttribute("class", "todo-due-date");
-        todoDueDate.textContent = "2/3/2025"; //Date placeholder
+        todoDueDate.textContent = todoObj.dueDate; 
         editButton.setAttribute("class", "todo-edit-button");
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
@@ -91,7 +103,25 @@ function TodayQuest() {
         todoContainer.appendChild(todoCard);
     }
 
-    return {generateTodayQuest};
+    function checkLocalStorageEmpty() {
+        //This is a utility function to check if the user is loading the App for the first time, or checks if there is nothing in the localStorage.
+        const appManage = ProjectAndTodo();
+        //If there is nothing in localStorage, then create a default project to display to the user
+        if (localStorage.length === 0) { //Default project display
+            appManage.createProject("Default Project");
+            appManage.createTodo("Default Todo", "Description goes here", "01/01/2025", "high", "Default Project");
+            return appManage.getProject("Default Project");
+        }
+        
+        //If there IS something in localStorage, get the first project from localStorage
+        return appManage.getFirstProject();
+
+        
+    }
+
+   
+
+    return { generateTodayQuest };
 }
 
 export default TodayQuest;

@@ -94,6 +94,13 @@ function ProjectAndTodo() {
         }
     }
 
+    function getFirstProject() {
+        //Gets the first project object out of the localStorage
+        const firstProjKey = localStorage.key(0);
+        const firstProjObj = getProject(firstProjKey);
+        return firstProjObj;
+    }
+
     //Todo functions
     function createTodo(title, description, dueDate, priority, projName) {
         const tempTodo = {
@@ -174,7 +181,7 @@ function ProjectAndTodo() {
 
 
 
-    return {createProject, removeProject, getProject, updateProjectName, viewProject, createTodo, getTodo, removeTodo, updateTodo};
+    return {createProject, removeProject, getProject, updateProjectName, viewProject, getFirstProject, createTodo, getTodo, removeTodo, updateTodo};
 }
 
 export default ProjectAndTodo;
