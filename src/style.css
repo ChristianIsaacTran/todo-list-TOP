@@ -61,6 +61,11 @@ body {
     align-items: center;
     padding: 30px 100px;
     gap: 50px;
+    height: 100vh;
+    width: 30vw;
+    min-height: 940px;
+    min-width: 530px;
+    
 }
 
 #sidebar,
@@ -76,8 +81,12 @@ dialog {
 
 #content {
     width: 100vw;
+    height: 100vh;
     padding: 50px;
+    min-height: 940px;
+    min-width: 1370px;
 }
+
 
 .site-icon {
     width: 100px;
@@ -132,6 +141,8 @@ dialog {
 }
 
 .project-container {
+    display: flex;
+    flex-direction: column;
     padding: 0 100px;
 }
 
@@ -139,15 +150,18 @@ dialog {
     display: flex;
     justify-content: space-between;
     margin-bottom: 15px;
+    flex-shrink: 0;
 }
 
 .project-header>h2 {
+    flex-shrink: 0;
     font-size: 2rem;
 }
 
 .project-header-buttons {
     display: flex;
     gap: 40px;
+    flex-shrink: 0;
 }
 
 .todo-container {
@@ -155,6 +169,8 @@ dialog {
     flex-direction: column;
     padding: 40px;
     gap: 30px;
+    flex-shrink: 0;
+    min-width: 1030px;
 }
 
 .todo-card {
