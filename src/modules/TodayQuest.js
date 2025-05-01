@@ -103,6 +103,8 @@ function TodayQuest() {
 
         //button events
         cancelButton.addEventListener("click", function() {
+            //reset form, then close modal
+            form.reset();
             dialog.close();
         });
         submitButton.addEventListener("click", function(event) {
