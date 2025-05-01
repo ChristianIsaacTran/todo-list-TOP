@@ -55,3 +55,21 @@ ProjectAndTodo.js -
         -- updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority): given a todo that you want to replace and the project that it's in, it will replace the todo in the project's todo array with the new todo specified with new properties.
 
     **All project/todo functions check if either the todo/project even exists. Will send a console.log if it is successful or not**
+
+
+    Plans to implement:
+    
+    -- Project Buttons: 
+    (Done) Edit Project Name button: confirmed working 4/30/2025. Changes the current project's name on display and in the localStorage
+
+    Change Quest button: Changes the current project that the user is viewing. Bring up a modal with a drop down menu of all of the projects. Probably can get all of them in a loop with localStorage.key();
+
+
+    -- Todo Buttons: 
+    Complete button: toggles a crossed out faded thing to indicate the todo is completed.
+
+    Edit: Edit the todo properties and update them.
+
+    remove: completely removes the todo from the project.
+
+    ** (not made yet) view: will let the user view the entire selected todo in detail, probably through a modal.
