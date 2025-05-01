@@ -1,6 +1,6 @@
 @font-face {
     font-family: "pixel";
-    src: 
+    src:
         url("./fonts/PixelOperator.ttf") format("TrueType");
 
 }
@@ -12,7 +12,9 @@
     --section-border: 20px ridge grey;
     --round-border: 30px;
     --inside-shadow: inset 0 0 12px 5px black;
-
+    --round-button: 30px;
+    --button-gradient: linear-gradient(rgb(94, 0, 0), red);
+    --button-font-text-shadow: 0px 3px 2px black;
 }
 
 *,
@@ -32,7 +34,7 @@ ol,
 li,
 p,
 body {
-    padding: 0; 
+    padding: 0;
     margin: 0;
 }
 
@@ -42,35 +44,38 @@ html {
 
 body {
     font-family: "pixel";
-    font-size: 1rem;    
+    font-size: 1rem;
     min-height: 100vh;
     margin: 0;
     padding: 0;
     display: flex;
     text-shadow: var(--white-font-text-shadow);
     color: var(--font-color);
-    
+
 }
 
 #sidebar {
-    background-color: var(--content-bg-color);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     padding: 30px 100px;
     gap: 50px;
+}
+
+#sidebar,
+#content,
+.todo-container,
+dialog {
+    background-color: var(--content-bg-color);
     border: var(--section-border);
-    box-shadow: var(--inside-shadow);
     border-radius: var(--round-border);
+    box-shadow: var(--inside-shadow);
+    color: var(--font-color);
 }
 
 #content {
-    background-color: var(--content-bg-color);
     width: 100vw;
-    border: var(--section-border);
-    border-radius: var(--round-border);
-    box-shadow: var(--inside-shadow);
     padding: 50px;
 }
 
@@ -79,7 +84,7 @@ body {
     filter: invert(50%) brightness(100);
 }
 
-.logo > h1 {
+.logo>h1 {
     font-size: 3rem;
 }
 
@@ -136,7 +141,7 @@ body {
     margin-bottom: 15px;
 }
 
-.project-header > h2 {
+.project-header>h2 {
     font-size: 2rem;
 }
 
@@ -146,11 +151,8 @@ body {
 }
 
 .todo-container {
-    display: flex; 
+    display: flex;
     flex-direction: column;
-    border: var(--section-border);
-    border-radius: var(--round-border);
-    box-shadow: var(--inside-shadow);
     padding: 40px;
     gap: 30px;
 }
@@ -173,4 +175,53 @@ body {
 .card-right {
     display: flex;
     gap: 10px;
+}
+
+.change-project-name-modal {
+    padding: 90px;
+}
+
+.change-project-name-form {
+    font-size: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.changeP-modal-inputs {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.changeP-modal-buttons {
+    display: flex;
+    align-self: flex-end;
+    gap: 50px;
+}
+
+.cancel-button,
+.submit-button {
+    font-size: 1.5rem;
+    padding: 5px 30px;
+    border-radius: var(--round-button);
+    color: var(--font-color);
+    background: var(--button-gradient);
+    text-shadow: var(--button-font-text-shadow);
+}
+
+.button-pointer-cancel:hover::before {
+    content: "🖝";
+    position: absolute;
+    left: 240px;
+    font-size: 1.7rem;
+    text-shadow: var(--white-font-text-shadow);
+}
+
+.button-pointer-submit:hover::before {
+    content: "🖝";
+    position: absolute;
+    left: 445px;
+    font-size: 1.7rem;
+    text-shadow: var(--white-font-text-shadow);
 }

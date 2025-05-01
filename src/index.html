@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <link rel="icon" href="./imgs/favicon.ico" type="image/x-icon">
-    
+
 </head>
+
 <body>
     <div id="sidebar">
         <div class="logo">
@@ -18,32 +20,22 @@
             <li><a href="">Create Todo</a></li>
             <li><a href="">Create Project</a></li>
             <li><a href="">View all Projects</a></li>
-        </div>
+    </div>
     </div>
     <div id="content">
-        <!-- <h1 class="today-quest-header">Today's Quest: </h1>
-        <div class="project-container">
-            <div class="project-header">
-                <h2>(Project Name)</h2>
-                <div class="project-header-buttons">
-                    <button class="change-proj-name">Edit Project Name</button>
-                    <button class="change-quest-button">Change Quest</button>
+        <dialog class="change-project-name-modal" open>
+            <form class="change-project-name-form" action="" method="">
+                <div class="changeP-modal-inputs">
+                    <label for="new-proj-name">Enter new name:</label>
+                    <input id="new-proj-name" type="text" autofocus>
                 </div>
-            </div>
-            <div class="todo-container">
-                <div class="todo-card">
-                    <div class="card-left">
-                        <button class="todo-complete">Complete</button>
-                        <p class="todo-title">Todo 1</p>
-                        <p class="todo-due-date">2/3/2025</p>
-                    </div>
-                    <div class="card-right">
-                        <button class="todo-edit-button">Edit</button>
-                        <button class="todo-remove-button">Remove</button>
-                    </div>
+                <div class="changeP-modal-buttons">
+                    <div class="button-pointer-cancel"> <button type="button" class="cancel-button">Cancel</button></div>
+                    <div class="button-pointer-submit"><button type="submit" class="submit-button">Submit</button></div>
                 </div>
-            </div>
-        </div> -->
+            </form>
+        </dialog>
     </div>
 </body>
+
 </html>

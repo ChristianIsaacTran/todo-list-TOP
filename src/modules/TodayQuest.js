@@ -22,6 +22,9 @@ function TodayQuest() {
         todoContainer.setAttribute("class", "todo-container");
 
 
+        //Generate html modals for edit/change options
+        generateChangeProjNameModal();
+
         /*
         Checks if localStorage is empty and dynamically creates/displays projects depending on if it is empty
         1. if localStorage is empty = create a default project to display
@@ -54,9 +57,11 @@ function TodayQuest() {
         projectName.textContent = tempProj.name; //Project name placeholder
         projHeaderButtons.setAttribute("class", "project-header-buttons");
         changeProjNameButton.setAttribute("class", "change-proj-name");
-        changeProjNameButton.textContent = "Edit Project";
+        changeProjNameButton.textContent = "Edit Project Name";
+        changeProjNameButton.addEventListener("click", changeProjNameHandler);
         changeQuestButton.setAttribute("class", "change-quest-button");
         changeQuestButton.textContent = "Change Quest";
+        
 
         //Construct the HTML elements together
         projHeaderButtons.appendChild(changeProjNameButton);
@@ -65,6 +70,17 @@ function TodayQuest() {
         projectHeader.appendChild(projHeaderButtons);
     }
 
+    function generateChangeProjNameModal() {
+        const dialog = document.createElement("dialog");
+    }
+
+
+    function changeProjNameHandler() {
+        const appManage = ProjectAndTodo();
+        //Open a modal for options
+    }
+
+    
     function generateTodoCard(todoContainer, todoObj) {
         const todoCard = document.createElement("div");
         const cardLeft = document.createElement("div");
@@ -118,8 +134,6 @@ function TodayQuest() {
 
         
     }
-
-   
 
     return { generateTodayQuest };
 }
