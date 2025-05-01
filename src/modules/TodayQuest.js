@@ -97,6 +97,8 @@ function TodayQuest() {
         projNameInput.setAttribute("type", "text");
         projNameInput.setAttribute("name", "projTitle");
         projNameInput.setAttribute("autofocus", "");
+        projNameInput.setAttribute("maxlength","20");
+        projNameInput.setAttribute("placeholder", "Max 20 characters...")
         modalButtonContainer.setAttribute("class", "changeP-modal-buttons");
         buttonPointerCancel.setAttribute("class", "button-pointer-cancel");
         buttonPointerSubmit.setAttribute("class", "button-pointer-submit");
