@@ -97,9 +97,9 @@ function ProjectAndTodo() {
 
     function getLastProject() {
         //Gets the last project object out of the localStorage
-        const firstProjKey = localStorage.key(localStorage.length - 1);
-        const firstProjObj = getProject(firstProjKey);
-        return firstProjObj;
+        const lastProjKey = localStorage.key(localStorage.length - 1);
+        const lastProjObj = getProject(lastProjKey);
+        return lastProjObj;
     }
 
     //Todo functions
