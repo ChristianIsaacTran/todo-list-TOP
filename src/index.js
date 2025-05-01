@@ -9,6 +9,7 @@ import TodayQuest from "./modules/TodayQuest.js";
 
 const appManage = ProjectAndTodo();
 
+// appManage.createProject("project 6");
 
 const todayQuestPage = TodayQuest();
 

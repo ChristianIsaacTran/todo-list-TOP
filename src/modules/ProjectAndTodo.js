@@ -49,7 +49,8 @@ function ProjectAndTodo() {
 
         //Check if the replaceName already exists within the localStorage 
         if (localStorage.getItem(replaceName)) {
-            return console.log("The project name already exists!, updateProjectName unsuccessful")
+            console.log("The project name already exists!, updateProjectName unsuccessful");
+            return alert("Error: Project already exists!");
         }
 
         //Check if key even exists
@@ -94,9 +95,9 @@ function ProjectAndTodo() {
         }
     }
 
-    function getFirstProject() {
-        //Gets the first project object out of the localStorage
-        const firstProjKey = localStorage.key(0);
+    function getLastProject() {
+        //Gets the last project object out of the localStorage
+        const firstProjKey = localStorage.key(localStorage.length - 1);
         const firstProjObj = getProject(firstProjKey);
         return firstProjObj;
     }
@@ -181,7 +182,7 @@ function ProjectAndTodo() {
 
 
 
-    return {createProject, removeProject, getProject, updateProjectName, viewProject, getFirstProject, createTodo, getTodo, removeTodo, updateTodo};
+    return {createProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, createTodo, getTodo, removeTodo, updateTodo};
 }
 
 export default ProjectAndTodo;

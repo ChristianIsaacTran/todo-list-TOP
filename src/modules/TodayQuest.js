@@ -98,7 +98,8 @@ function TodayQuest() {
         projNameInput.setAttribute("name", "projTitle");
         projNameInput.setAttribute("autofocus", "");
         projNameInput.setAttribute("maxlength","20");
-        projNameInput.setAttribute("placeholder", "Max 20 characters...")
+        projNameInput.setAttribute("placeholder", "Max 20 characters...");
+        projNameInput.setAttribute("required", "");
         modalButtonContainer.setAttribute("class", "changeP-modal-buttons");
         buttonPointerCancel.setAttribute("class", "button-pointer-cancel");
         buttonPointerSubmit.setAttribute("class", "button-pointer-submit");
@@ -121,6 +122,11 @@ function TodayQuest() {
             const modalData = new FormData(form);
 
             //USE FORM DATA TO UPDATE PROJECT NAME
+            if(modalData.get("projTitle") === "" || modalData.get("projTitle") === " "){
+                //Don't close modal and alert
+                return alert("Error: Empty or blank text. Please enter a valid project name.");
+            }
+
             appManage.updateProjectName(tempProj.name, modalData.get("projTitle"));
 
             //remove content THEN re-render page
@@ -210,8 +216,8 @@ function TodayQuest() {
             return appManage.getProject("Default Project");
         }
         
-        //If there IS something in localStorage, get the first project from localStorage
-        return appManage.getFirstProject();
+        //If there IS something in localStorage, get the last project from localStorage
+        return appManage.getLastProject();
 
         
     }
