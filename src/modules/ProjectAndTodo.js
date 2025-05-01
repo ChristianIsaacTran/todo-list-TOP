@@ -50,7 +50,8 @@ function ProjectAndTodo() {
         //Check if the replaceName already exists within the localStorage 
         if (localStorage.getItem(replaceName)) {
             console.log("The project name already exists!, updateProjectName unsuccessful");
-            return alert("Error: Project already exists!");
+            alert("Error: Project name already exists!");
+            return false;
         }
 
         //Check if key even exists
@@ -61,10 +62,12 @@ function ProjectAndTodo() {
             tempProj.name = replaceName;
             localStorage.setItem(replaceName, JSON.stringify(tempProj));
             removeProject(prevName);
-            return console.log("updateProjectName successful");
+            console.log("updateProjectName successful");
+            return true;
         }
 
-        return console.log("The given key/value doesn't exist, updateProjectName unsuccessful");
+        console.log("The given key/value doesn't exist, updateProjectName unsuccessful");
+        return false;
 
 
     }

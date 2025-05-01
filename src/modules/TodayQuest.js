@@ -64,7 +64,7 @@ function TodayQuest() {
         changeQuestButton.textContent = "Change Quest";
         buttonPointer1.setAttribute("class", "button-pointer");
         buttonPointer2.setAttribute("class", "button-pointer");
-        
+
 
         //Construct the HTML elements together
         buttonPointer1.appendChild(changeProjNameButton);
@@ -97,7 +97,7 @@ function TodayQuest() {
         projNameInput.setAttribute("type", "text");
         projNameInput.setAttribute("name", "projTitle");
         projNameInput.setAttribute("autofocus", "");
-        projNameInput.setAttribute("maxlength","20");
+        projNameInput.setAttribute("maxlength", "20");
         projNameInput.setAttribute("placeholder", "Max 20 characters...");
         projNameInput.setAttribute("required", "");
         modalButtonContainer.setAttribute("class", "changeP-modal-buttons");
@@ -111,23 +111,24 @@ function TodayQuest() {
         submitButton.textContent = "Submit";
 
         //button events
-        cancelButton.addEventListener("click", function() {
+        cancelButton.addEventListener("click", function () {
             //reset form, then close modal
             form.reset();
             dialog.close();
         });
-        submitButton.addEventListener("click", function(event) {
+        submitButton.addEventListener("click", function (event) {
             event.preventDefault();
             const appManage = ProjectAndTodo();
             const modalData = new FormData(form);
 
             //USE FORM DATA TO UPDATE PROJECT NAME
-            if(modalData.get("projTitle") === "" || modalData.get("projTitle") === " "){
-                //Don't close modal and alert
+            if (modalData.get("projTitle") === "" || modalData.get("projTitle") === " ") { //Empty string check
                 return alert("Error: Empty or blank text. Please enter a valid project name.");
             }
 
-            appManage.updateProjectName(tempProj.name, modalData.get("projTitle"));
+            if (!appManage.updateProjectName(tempProj.name, modalData.get("projTitle"))) { //Check if project name exists
+                return; //prevent modal from closing
+            }
 
             //remove content THEN re-render page
             removeTodayQuestPage();
@@ -158,7 +159,7 @@ function TodayQuest() {
         dialog.showModal();
     }
 
-    
+
     function generateTodoCard(todoContainer, todoObj) {
         const todoCard = document.createElement("div");
         const cardLeft = document.createElement("div");
@@ -179,9 +180,9 @@ function TodayQuest() {
         completeButton.setAttribute("class", "todo-complete");
         completeButton.textContent = "Complete";
         todoTitle.setAttribute("class", "todo-title");
-        todoTitle.textContent = todoObj.title; 
+        todoTitle.textContent = todoObj.title;
         todoDueDate.setAttribute("class", "todo-due-date");
-        todoDueDate.textContent = todoObj.dueDate; 
+        todoDueDate.textContent = todoObj.dueDate;
         editButton.setAttribute("class", "todo-edit-button");
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
@@ -215,11 +216,11 @@ function TodayQuest() {
             appManage.createTodo("Default Todo", "Description goes here", "01/01/2025", "high", "Default Project");
             return appManage.getProject("Default Project");
         }
-        
+
         //If there IS something in localStorage, get the last project from localStorage
         return appManage.getLastProject();
 
-        
+
     }
 
     //Utility function to remove entire page. Used to help with re-rendering
@@ -229,7 +230,7 @@ function TodayQuest() {
         const projectContainer = document.querySelector(".project-container");
 
         //remove entire page from DOM
-        todayQuestHeader.remove();  
+        todayQuestHeader.remove();
         projectContainer.remove();
     }
 
