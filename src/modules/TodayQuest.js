@@ -51,6 +51,8 @@ function TodayQuest() {
         const projHeaderButtons = document.createElement("div");
         const changeProjNameButton = document.createElement("button");
         const changeQuestButton = document.createElement("button");
+        const buttonPointer1 = document.createElement("div");
+        const buttonPointer2 = document.createElement("div");
 
         //add attributes and content
         projectName.textContent = tempProj.name; //Project name placeholder
@@ -60,11 +62,15 @@ function TodayQuest() {
         changeProjNameButton.addEventListener("click", changeProjNameHandler);
         changeQuestButton.setAttribute("class", "change-quest-button");
         changeQuestButton.textContent = "Change Quest";
+        buttonPointer1.setAttribute("class", "button-pointer");
+        buttonPointer2.setAttribute("class", "button-pointer");
         
 
         //Construct the HTML elements together
-        projHeaderButtons.appendChild(changeProjNameButton);
-        projHeaderButtons.appendChild(changeQuestButton);
+        buttonPointer1.appendChild(changeProjNameButton);
+        buttonPointer2.appendChild(changeQuestButton);
+        projHeaderButtons.appendChild(buttonPointer1);
+        projHeaderButtons.appendChild(buttonPointer2);
         projectHeader.appendChild(projectName);
         projectHeader.appendChild(projHeaderButtons);
     }
@@ -122,8 +128,6 @@ function TodayQuest() {
             dialog.close();
         });
 
-
-
         //Build HTML
         modalInputsContainer.appendChild(projNameLabel);
         modalInputsContainer.appendChild(projNameInput);
@@ -156,6 +160,9 @@ function TodayQuest() {
         const todoDueDate = document.createElement("p");
         const editButton = document.createElement("button");
         const removeButton = document.createElement("button");
+        const buttonPointer1 = document.createElement("div");
+        const buttonPointer2 = document.createElement("div");
+        const buttonPointer3 = document.createElement("div");
 
         //add attributes and content
         todoCard.setAttribute("class", "todo-card");
@@ -171,13 +178,19 @@ function TodayQuest() {
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
         removeButton.textContent = "Remove";
+        buttonPointer1.setAttribute("class", "button-pointer");
+        buttonPointer2.setAttribute("class", "button-pointer");
+        buttonPointer3.setAttribute("class", "button-pointer");
 
         //Construct HTML elements
-        cardLeft.appendChild(completeButton);
+        buttonPointer1.appendChild(completeButton);
+        cardLeft.appendChild(buttonPointer1);
         cardLeft.appendChild(todoTitle);
         cardLeft.appendChild(todoDueDate);
-        cardRight.appendChild(editButton);
-        cardRight.appendChild(removeButton);
+        buttonPointer2.appendChild(editButton);
+        cardRight.appendChild(buttonPointer2);
+        buttonPointer3.appendChild(removeButton);
+        cardRight.appendChild(buttonPointer3);
         todoCard.appendChild(cardLeft);
         todoCard.appendChild(cardRight);
 

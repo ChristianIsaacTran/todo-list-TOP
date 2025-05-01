@@ -212,7 +212,8 @@ button {
 }
 
 .button-pointer-cancel:hover::before,
-.button-pointer-submit:hover::before {
+.button-pointer-submit:hover::before,
+.button-pointer:hover::before {
     content: "🖝";
     position: absolute;
     font-size: 1.7rem;
