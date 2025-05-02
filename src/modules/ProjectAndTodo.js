@@ -8,7 +8,7 @@ function ProjectAndTodo() {
     //Project functions
     function createProject(projName) {
 
-        if(localStorage.getItem(projName)) {
+        if (localStorage.getItem(projName)) {
             return console.log("given project name already exists, createProject not successful");
         }
 
@@ -45,6 +45,15 @@ function ProjectAndTodo() {
         }
     }
 
+    function getAllProjectKeys() {
+        const keyArr = [];
+        for (let i = 0; i < localStorage.length; i++) {
+            keyArr.push(localStorage.key(i));
+        }
+
+        return keyArr;
+    }
+
     function updateProjectName(prevName, replaceName) {
 
         //Check if the replaceName already exists within the localStorage 
@@ -72,14 +81,14 @@ function ProjectAndTodo() {
 
     }
 
-    function viewProject (projName) {
+    function viewProject(projName) {
         const tempProj = getProject(projName);
-        if(!tempProj) {
+        if (!tempProj) {
             return console.log("Project doesn't exist, viewProject not successful");
         }
 
         console.log(`Name of Project: ${tempProj.name} \n Todos: `);
-        for(let todoObj of tempProj.todos) {
+        for (let todoObj of tempProj.todos) {
             console.log(`title of todo: ${todoObj.title} | due date: ${todoObj.dueDate}\n`);
         }
 
@@ -172,21 +181,33 @@ function ProjectAndTodo() {
     }
 
     function updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority) {
-        // 1. create a new todo and add it to the selected project
-        if(createTodo(replaceTitle, replaceDes, replaceDate, replacePriority, projName)){
-            // 2. remove the previous todo since we want to swap out the previous todo with the replacement 
-        //    we just made above
-            removeTodo(prevTitleName, projName);
-            return console.log("updateTodo successful");
+
+        //Also check if prevTitleName (previous todo) even exists
+        let prevTodoExist = false;
+        const tempProj = getProject(projName);
+        for (let todo of tempProj.todos) {
+            if (todo.title === prevTitleName) {
+                prevTodoExist = true; //Found, it does exist and will replace.
+            }
+        }
+
+        if (prevTodoExist) {//If the previous todo exists, attempt to replace
+            // 1. create a new todo and add it to the selected project
+            if (createTodo(replaceTitle, replaceDes, replaceDate, replacePriority, projName)) {
+                // 2. remove the previous todo since we want to swap out the previous todo with the replacement 
+                //    we just made above
+                removeTodo(prevTitleName, projName);
+                return console.log("updateTodo successful");
+            }
         }
 
         return console.log("updateTodo not successful");
-        
+
     }
 
 
 
-    return {createProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, createTodo, getTodo, removeTodo, updateTodo};
+    return { createProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo };
 }
 
 export default ProjectAndTodo;

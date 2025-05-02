@@ -193,24 +193,27 @@ dialog {
     gap: 10px;
 }
 
-.change-project-name-modal {
+.change-project-name-modal,
+.change-quest-modal {
     padding: 90px;
 }
 
-.change-project-name-form {
+.change-project-name-form,
+.change-quest-form {
     font-size: 2rem;
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-.changeP-modal-inputs {
+.changeP-modal-inputs,
+.changeQ-modal-inputs {
     display: flex;
     justify-content: center;
     gap: 30px;
 }
 
-.changeP-modal-buttons {
+.modal-buttons {
     display: flex;
     align-self: flex-end;
     gap: 50px;
@@ -227,19 +230,9 @@ button {
     text-shadow: var(--button-font-text-shadow);
 }
 
-.button-pointer-cancel:hover::before,
-.button-pointer-submit:hover::before,
 .button-pointer:hover::before {
     content: "🖝";
     position: absolute;
     font-size: 1.7rem;
     text-shadow: var(--white-font-text-shadow);
-}
-
-.button-pointer-cancel:hover::before{
-    left: 375px;
-}
-
-.button-pointer-submit:hover::before{
-    left: 582px;
 }

@@ -6,7 +6,7 @@ import ProjectAndTodo from "./ProjectAndTodo.js";
 function TodayQuest() {
 
     //Main generation function
-    function generateTodayQuest() {
+    function generateTodayQuest(tempProj = checkLocalStorageEmpty()) {
         //Generate base containers
         const contentContainer = document.querySelector("#content");
         const todayQuestHeader = document.createElement("h1");
@@ -26,17 +26,18 @@ function TodayQuest() {
         1. if localStorage is empty = create a default project to display
         2. if localStorage is full = display the first project from localStorage
         */
-        const tempProj = checkLocalStorageEmpty();
-
-        generateProjHeader(projectHeader, tempProj);
-
-        for (let todo of tempProj.todos) {
-            generateTodoCard(todoContainer, todo);
-        }
 
         //Generate html modals for edit/change options
         generateChangeProjNameModal(projectContainer, tempProj);
+        generateChangeQuestModal(projectContainer, tempProj);
+        
+        //Generate project header
+        generateProjHeader(projectHeader, tempProj);
 
+        //Generate todo list
+        for (let todo of tempProj.todos) {
+            generateTodoCard(todoContainer, todo);
+        }
 
         //Construct main container
         projectContainer.appendChild(projectHeader);
@@ -62,6 +63,7 @@ function TodayQuest() {
         changeProjNameButton.addEventListener("click", changeProjNameHandler);
         changeQuestButton.setAttribute("class", "change-quest-button");
         changeQuestButton.textContent = "Change Quest";
+        changeQuestButton.addEventListener("click", changeQuestHandler);
         buttonPointer1.setAttribute("class", "button-pointer");
         buttonPointer2.setAttribute("class", "button-pointer");
 
@@ -73,6 +75,97 @@ function TodayQuest() {
         projHeaderButtons.appendChild(buttonPointer2);
         projectHeader.appendChild(projectName);
         projectHeader.appendChild(projHeaderButtons);
+    }
+
+    function generateChangeQuestModal(projectContainer, tempProj) {
+        const dialog = document.createElement("dialog");
+        const form = document.createElement("form");
+        const modalInputsContainer = document.createElement("div");
+        const changeProjLabel = document.createElement("label");
+        const changeProjChoice = document.createElement("input");
+        const changeProjList = document.createElement("datalist");
+        //dynamically create list options from localStorage
+        const modalButtonContainer = document.createElement("div");
+        const cancelButton = document.createElement("button");
+        const submitButton = document.createElement("button");
+        const buttonPointerCancel = document.createElement("div");
+        const buttonPointerSubmit = document.createElement("div");
+
+        //add attributes and content
+        dialog.setAttribute("class", "change-quest-modal");
+        form.setAttribute("class", "change-quest-form");
+        modalInputsContainer.setAttribute("class", "changeQ-modal-inputs");
+        changeProjLabel.setAttribute("for", "project-choice");
+        changeProjLabel.textContent = "Choose another quest: ";
+        changeProjChoice.setAttribute("list", "project-list");
+        changeProjChoice.setAttribute("id", "project-choice");
+        changeProjChoice.setAttribute("name", "project-choice");
+        changeProjList.setAttribute("id", "project-list");
+
+        //Dynamically create <option> html elements with all project names
+        const appManage = ProjectAndTodo();
+        const LSkeys = appManage.getAllProjectKeys(); //Gets an array of all project keys in localStorage
+
+        //Loop through all keys in localStorage and add them to dataList
+        for(let key of LSkeys) {
+            const option = document.createElement("option");
+            option.setAttribute("value", key);
+            changeProjList.appendChild(option);
+        }
+
+        //cancel and submit button content
+        modalButtonContainer.setAttribute("class", "modal-buttons");
+        buttonPointerCancel.setAttribute("class", "button-pointer");
+        buttonPointerSubmit.setAttribute("class", "button-pointer");
+        cancelButton.setAttribute("type", "button");
+        cancelButton.setAttribute("class", "cancel-button");
+        cancelButton.textContent = "Cancel";
+        submitButton.setAttribute("type", "submit");
+        submitButton.setAttribute("class", "submit-button");
+        submitButton.textContent = "Submit";
+
+        //cancel and submit button events
+        cancelButton.addEventListener("click", function() {
+            form.reset();
+            dialog.close();
+        });
+
+        submitButton.addEventListener("click", function(event) {
+            event.preventDefault();
+            const appManage = ProjectAndTodo();
+            const modalData = new FormData(form);
+
+            //USE FORM DATA TO UPDATE PROJECT NAME
+            if (modalData.get("project-choice") === "" || modalData.get("project-choice") === " ") { //Empty string check
+                return alert("Error: Empty or blank text. Please enter a valid project name.");
+            }
+
+            //Moves the chosen project to the end since it always either 
+            //displays a default project, or the END project.
+
+
+            //re-render
+            removeTodayQuestPage();
+            generateTodayQuest(appManage.getProject(modalData.get("project-choice")));
+
+            dialog.close()
+        });
+
+
+        //Build HTML
+        modalInputsContainer.appendChild(changeProjLabel);
+        modalInputsContainer.appendChild(changeProjChoice);
+        modalInputsContainer.appendChild(changeProjList);
+        buttonPointerCancel.appendChild(cancelButton);
+        buttonPointerSubmit.appendChild(submitButton);
+        modalButtonContainer.appendChild(buttonPointerCancel);
+        modalButtonContainer.appendChild(buttonPointerSubmit);
+
+        form.appendChild(modalInputsContainer);
+        form.appendChild(modalButtonContainer);
+        dialog.appendChild(form);
+
+        projectContainer.appendChild(dialog);
     }
 
     function generateChangeProjNameModal(projectContainer, tempProj) {
@@ -100,9 +193,9 @@ function TodayQuest() {
         projNameInput.setAttribute("maxlength", "20");
         projNameInput.setAttribute("placeholder", "Max 20 characters...");
         projNameInput.setAttribute("required", "");
-        modalButtonContainer.setAttribute("class", "changeP-modal-buttons");
-        buttonPointerCancel.setAttribute("class", "button-pointer-cancel");
-        buttonPointerSubmit.setAttribute("class", "button-pointer-submit");
+        modalButtonContainer.setAttribute("class", "modal-buttons");
+        buttonPointerCancel.setAttribute("class", "button-pointer");
+        buttonPointerSubmit.setAttribute("class", "button-pointer");
         cancelButton.setAttribute("type", "button");
         cancelButton.setAttribute("class", "cancel-button");
         cancelButton.textContent = "Cancel";
@@ -156,6 +249,11 @@ function TodayQuest() {
     function changeProjNameHandler() {
         //Open a modal for options
         const dialog = document.querySelector(".change-project-name-modal");
+        dialog.showModal();
+    }
+
+    function changeQuestHandler() {
+        const dialog = document.querySelector(".change-quest-modal");
         dialog.showModal();
     }
 
