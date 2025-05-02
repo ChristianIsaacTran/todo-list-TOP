@@ -6,7 +6,7 @@ import ProjectAndTodo from "./ProjectAndTodo.js";
 function TodayQuest() {
 
     //Main generation function
-    function generateTodayQuest(tempProj = checkLocalStorageEmpty()) {
+    function generateTodayQuest(currentProj = checkLocalStorageEmpty()) {
         //Generate base containers
         const contentContainer = document.querySelector("#content");
         const todayQuestHeader = document.createElement("h1");
@@ -28,14 +28,14 @@ function TodayQuest() {
         */
 
         //Generate html modals for edit/change options
-        generateChangeProjNameModal(projectContainer, tempProj);
-        generateChangeQuestModal(projectContainer, tempProj);
+        generateChangeProjNameModal(projectContainer, currentProj);
+        generateChangeQuestModal(projectContainer);
         
         //Generate project header
-        generateProjHeader(projectHeader, tempProj);
+        generateProjHeader(projectHeader, currentProj);
 
         //Generate todo list
-        for (let todo of tempProj.todos) {
+        for (let todo of currentProj.todos) {
             generateTodoCard(todoContainer, todo);
         }
 
@@ -47,7 +47,7 @@ function TodayQuest() {
 
     }
 
-    function generateProjHeader(projectHeader, tempProj) {
+    function generateProjHeader(projectHeader, currentProj) {
         const projectName = document.createElement("h2");
         const projHeaderButtons = document.createElement("div");
         const changeProjNameButton = document.createElement("button");
@@ -56,7 +56,7 @@ function TodayQuest() {
         const buttonPointer2 = document.createElement("div");
 
         //add attributes and content
-        projectName.textContent = tempProj.name; //Project name placeholder
+        projectName.textContent = currentProj.name; //Project name placeholder
         projHeaderButtons.setAttribute("class", "project-header-buttons");
         changeProjNameButton.setAttribute("class", "change-proj-name");
         changeProjNameButton.textContent = "Edit Project Name";
@@ -77,7 +77,7 @@ function TodayQuest() {
         projectHeader.appendChild(projHeaderButtons);
     }
 
-    function generateChangeQuestModal(projectContainer, tempProj) {
+    function generateChangeQuestModal(projectContainer) {
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
         const modalInputsContainer = document.createElement("div");
@@ -168,7 +168,7 @@ function TodayQuest() {
         projectContainer.appendChild(dialog);
     }
 
-    function generateChangeProjNameModal(projectContainer, tempProj) {
+    function generateChangeProjNameModal(projectContainer, currentProj) {
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
         const modalInputsContainer = document.createElement("div");
@@ -219,7 +219,7 @@ function TodayQuest() {
                 return alert("Error: Empty or blank text. Please enter a valid project name.");
             }
 
-            if (!appManage.updateProjectName(tempProj.name, modalData.get("projTitle"))) { //Check if project name exists
+            if (!appManage.updateProjectName(currentProj.name, modalData.get("projTitle"))) { //Check if project name exists
                 return; //prevent modal from closing
             }
 
