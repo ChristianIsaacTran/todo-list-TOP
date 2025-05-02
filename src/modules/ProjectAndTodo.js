@@ -198,16 +198,23 @@ function ProjectAndTodo() {
         return console.log("given todo not found, removeTodo not successful");
     }
 
-    function updateCompleteStatus(todoObj) {
-        
-        if(todoObj.status === "incomplete") {
-            todoObj.status = "complete";
-        }
-        else {
-            todoObj.status === "complete";
-        }
-        
+    function updateCompleteStatus(todoObj, currentProj) {
+        const tempProj = getProject(currentProj.name);
 
+        for(let todo of tempProj.todos) {
+            if(todo.title === todoObj.title) {
+                if(todo.status === "incomplete") {
+                    todo.status = "complete";
+                }
+                else {
+                    todo.status = "incomplete";
+                }
+                break;
+            }
+        }
+        
+        localStorage.setItem(tempProj.name, JSON.stringify(tempProj));
+        return tempProj;
     }
 
     function updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority, replaceStatus) {

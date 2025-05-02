@@ -36,7 +36,7 @@ function TodayQuest() {
 
         //Generate todo list
         for (let todo of currentProj.todos) {
-            generateTodoCard(todoContainer, todo);
+            generateTodoCard(todoContainer, todo, currentProj);
         }
 
         //Construct main container
@@ -259,7 +259,7 @@ function TodayQuest() {
     }
 
 
-    function generateTodoCard(todoContainer, todoObj) {
+    function generateTodoCard(todoContainer, todoObj, currentProj) {
         const todoCard = document.createElement("div");
         const cardLeft = document.createElement("div");
         const cardRight = document.createElement("div");
@@ -296,8 +296,13 @@ function TodayQuest() {
         //Button event listeners 
         completeButton.addEventListener("click", function() {
             const appManage = ProjectAndTodo();
-            //Switch current Todo's status
-            appManage.updateCompleteStatus(todoObj);
+            
+            
+            
+            //Re-render
+            removeTodayQuestPage();
+            //Switch current Todo's status, then use the new returned currentProj to re-render
+            generateTodayQuest(appManage.updateCompleteStatus(todoObj, currentProj));
         });
 
         //Construct HTML elements
