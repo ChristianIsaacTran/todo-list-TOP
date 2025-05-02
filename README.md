@@ -62,18 +62,16 @@ ProjectAndTodo.js -
     -- Project Buttons: 
     (Done) Edit Project Name button: confirmed working 4/30/2025. Changes the current project's name on display and in the localStorage
 
-    Change Quest button: Changes the current project that the user is viewing. Bring up a modal with a drop down menu of all of the projects. Probably can get all of them in a loop with localStorage.key();
+    (Done) Change Quest button: Confirmed working 5/1/2025. Changes the current project that the user is viewing. Bring up a modal with a drop down menu of all of the projects. Probably can get all of them in a loop with localStorage.key();
 
 
     -- Todo Buttons: 
-    Complete button: toggles a crossed out faded thing to indicate the todo is completed.
+    (Done) Complete button: Confirmed working 5/1/2025. toggles a crossed out faded thing to indicate the todo is completed.
 
     Edit: Edit the todo properties and update them.
 
     remove: completely removes the todo from the project.
 
-    ** (not made yet) view: will let the user view the entire selected todo in detail, probably through a modal.
+    view: will let the user view the entire selected todo in detail, probably through a modal.
 
 
--- Note to self: the updated localStorage items that we update/replace, both projects and todos, are .push() or appended to the 
-end of the localStorage/todo array. If I need to stay on the same item after updating it, make sure to parse the END of the lists/arrays.
