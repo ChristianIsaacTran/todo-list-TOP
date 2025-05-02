@@ -97,19 +97,7 @@ function ProjectAndTodo() {
 
     }
 
-    function viewProject(projName) {
-        const tempProj = getProject(projName);
-        if (!tempProj) {
-            return console.log("Project doesn't exist, viewProject not successful");
-        }
-
-        console.log(`Name of Project: ${tempProj.name} \n Todos: `);
-        for (let todoObj of tempProj.todos) {
-            console.log(`title of todo: ${todoObj.title} | due date: ${todoObj.dueDate}\n`);
-        }
-
-        console.log("viewProject successful");
-    }
+   
 
     //utility function to replace an existing project with the new modified given project (projObj)
     function updateProjectAll(key, projObj) {
@@ -244,7 +232,7 @@ function ProjectAndTodo() {
 
 
 
-    return { createProject, createDefaultProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo, updateCompleteStatus };
+    return { createProject, createDefaultProject, removeProject, getProject, updateProjectName, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo, updateCompleteStatus };
 }
 
 export default ProjectAndTodo;
