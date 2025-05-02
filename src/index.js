@@ -9,14 +9,16 @@ import TodayQuest from "./modules/TodayQuest.js";
 
 const appManage = ProjectAndTodo();
 
-// appManage.createProject("project 1");
-
-// appManage.createTodo("new todo 2", "dqwdwq", "dqqdw", "dwqq", "project 1");
-
-appManage.updateTodo("new todo 1", "project 1", "new todo 8", "fewfew", "fweefw", "fewfew");
-
 const todayQuestPage = TodayQuest();
 
+// appManage.createProject("project 1");
+// appManage.createProject("project 2");
+
+// appManage.createTodo("todo 1", "fewwe","fewewff","fwefweew","incomplete", "project 1");
+// appManage.createTodo("todo 2", "fewwe","fewewff","fwefweew","incomplete", "project 1");
+// appManage.createTodo("todo 3", "fewwe","fewewff","fwefweew","incomplete", "project 1");
+
+//First time render, or page open render
 todayQuestPage.generateTodayQuest();
 
 

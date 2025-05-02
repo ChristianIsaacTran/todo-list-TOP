@@ -176,21 +176,32 @@ dialog {
 .todo-card {
     display: flex;
     justify-content: space-between;
+    gap: 50px;
 
 }
 
 .card-left {
     display: flex;
-    gap: 30px;
+    align-items: center;
+    gap: 15px;
 }
 
 .card-left p {
     font-size: 1.5rem;
 }
 
+.card-left button {
+    font-size: 1rem;
+}
+
 .card-right {
     display: flex;
+    align-items: center;
     gap: 10px;
+}
+
+.card-right button {
+    font-size: 1rem;
 }
 
 .change-project-name-modal,

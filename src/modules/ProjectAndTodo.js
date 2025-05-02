@@ -21,6 +21,21 @@ function ProjectAndTodo() {
         localStorage.setItem(`${projName}`, JSON.stringify(tempProj));
     }
 
+    function createDefaultProject() {
+        const tempProj = { name: "Default Project", todos: [
+            {title: "Default todo 1",
+                description: "Description goes here",
+                dueDate: "01/01/2025",
+                priority: "medium",
+                status: "incomplete"}
+        ] };
+
+        //Store object as a string/JSON in localStorage with JSON.stringify
+        localStorage.setItem("Default Project", JSON.stringify(tempProj));
+        
+        return getProject("Default Project");
+    }
+
     function removeProject(projName) {
         //Look for key in localStorage to remove
         if (localStorage.getItem(projName)) { //Check if project even exists
@@ -41,7 +56,8 @@ function ProjectAndTodo() {
             return tempProj; //Return parsed object
         }
         else {
-            return console.log("Project not found!, getProject not successful");
+            alert("Error: Project not found!, getProject not successful");
+            return false;
         }
     }
 
@@ -115,12 +131,13 @@ function ProjectAndTodo() {
     }
 
     //Todo functions
-    function createTodo(title, description, dueDate, priority, projName) {
+    function createTodo(title, description, dueDate, priority, status = "incomplete", projName) {
         const tempTodo = {
             title: title,
             description: description,
             dueDate: dueDate,
-            priority: priority
+            priority: priority,
+            status: status
         };
 
         //add new todo to project in local storage, IF there isnt an exact named todo in the project already
@@ -148,7 +165,8 @@ function ProjectAndTodo() {
         //get the project that todo is in
         const tempProj = getProject(projName);
         if (!tempProj) {
-            return console.log("Project doesn't exist, getTodo not succesful");
+            console.log("Project doesn't exist, getTodo not succesful");
+            return alert("Error: project doesn't exist, getTodo not successful");
         }
         //Search for todo from todos array
         for (let todoObj of tempProj.todos) {
@@ -158,7 +176,7 @@ function ProjectAndTodo() {
             }
         }
 
-        return console.log("getTodo not successful");
+        return alert("Error: Todo is not found, getTodo not successful");
     }
 
     function removeTodo(titleName, projName) {
@@ -180,7 +198,19 @@ function ProjectAndTodo() {
         return console.log("given todo not found, removeTodo not successful");
     }
 
-    function updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority) {
+    function updateCompleteStatus(todoObj) {
+        
+        if(todoObj.status === "incomplete") {
+            todoObj.status = "complete";
+        }
+        else {
+            todoObj.status === "complete";
+        }
+        
+
+    }
+
+    function updateTodo(prevTitleName, projName, replaceTitle, replaceDes, replaceDate, replacePriority, replaceStatus) {
 
         //Also check if prevTitleName (previous todo) even exists
         let prevTodoExist = false;
@@ -193,7 +223,7 @@ function ProjectAndTodo() {
 
         if (prevTodoExist) {//If the previous todo exists, attempt to replace
             // 1. create a new todo and add it to the selected project
-            if (createTodo(replaceTitle, replaceDes, replaceDate, replacePriority, projName)) {
+            if (createTodo(replaceTitle, replaceDes, replaceDate, replacePriority, replaceStatus, projName)) {
                 // 2. remove the previous todo since we want to swap out the previous todo with the replacement 
                 //    we just made above
                 removeTodo(prevTitleName, projName);
@@ -207,7 +237,7 @@ function ProjectAndTodo() {
 
 
 
-    return { createProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo };
+    return { createProject, createDefaultProject, removeProject, getProject, updateProjectName, viewProject, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo, updateCompleteStatus };
 }
 
 export default ProjectAndTodo;

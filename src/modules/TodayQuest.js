@@ -100,6 +100,7 @@ function TodayQuest() {
         changeProjChoice.setAttribute("list", "project-list");
         changeProjChoice.setAttribute("id", "project-choice");
         changeProjChoice.setAttribute("name", "project-choice");
+        changeProjChoice.setAttribute("placeholder", "Enter project name...");
         changeProjList.setAttribute("id", "project-list");
 
         //Dynamically create <option> html elements with all project names
@@ -140,9 +141,9 @@ function TodayQuest() {
                 return alert("Error: Empty or blank text. Please enter a valid project name.");
             }
 
-            //Moves the chosen project to the end since it always either 
-            //displays a default project, or the END project.
-
+            if(!appManage.getProject(modalData.get("project-choice"))) {
+                return;
+            }
 
             //re-render
             removeTodayQuestPage();
@@ -265,6 +266,7 @@ function TodayQuest() {
         const completeButton = document.createElement("button");
         const todoTitle = document.createElement("p");
         const todoDueDate = document.createElement("p");
+        const todoStatus = document.createElement("p");
         const editButton = document.createElement("button");
         const removeButton = document.createElement("button");
         const buttonPointer1 = document.createElement("div");
@@ -281,6 +283,8 @@ function TodayQuest() {
         todoTitle.textContent = todoObj.title;
         todoDueDate.setAttribute("class", "todo-due-date");
         todoDueDate.textContent = todoObj.dueDate;
+        todoStatus.setAttribute("class", "todo-status");
+        todoStatus.textContent = todoObj.status;
         editButton.setAttribute("class", "todo-edit-button");
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
@@ -289,11 +293,19 @@ function TodayQuest() {
         buttonPointer2.setAttribute("class", "button-pointer");
         buttonPointer3.setAttribute("class", "button-pointer");
 
+        //Button event listeners 
+        completeButton.addEventListener("click", function() {
+            const appManage = ProjectAndTodo();
+            //Switch current Todo's status
+            appManage.updateCompleteStatus(todoObj);
+        });
+
         //Construct HTML elements
         buttonPointer1.appendChild(completeButton);
         cardLeft.appendChild(buttonPointer1);
         cardLeft.appendChild(todoTitle);
         cardLeft.appendChild(todoDueDate);
+        cardLeft.appendChild(todoStatus);
         buttonPointer2.appendChild(editButton);
         cardRight.appendChild(buttonPointer2);
         buttonPointer3.appendChild(removeButton);
@@ -310,9 +322,7 @@ function TodayQuest() {
         const appManage = ProjectAndTodo();
         //If there is nothing in localStorage, then create a default project to display to the user
         if (localStorage.length === 0) { //Default project display
-            appManage.createProject("Default Project");
-            appManage.createTodo("Default Todo", "Description goes here", "01/01/2025", "high", "Default Project");
-            return appManage.getProject("Default Project");
+            return appManage.createDefaultProject();
         }
 
         //If there IS something in localStorage, get the last project from localStorage
