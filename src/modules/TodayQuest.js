@@ -285,8 +285,17 @@ function TodayQuest() {
         todoTitle.textContent = todoObj.title;
         todoDueDate.setAttribute("class", "todo-due-date");
         todoDueDate.textContent = todoObj.dueDate;
-        todoStatus.setAttribute("class", "todo-status");
+        
         todoStatus.textContent = todoObj.status;
+
+        //if statement to apply styling class tag
+        if(todoObj.status === "incomplete") {
+            todoStatus.setAttribute("class", "todo-status-incomplete");
+        }
+        else{
+            todoStatus.setAttribute("class", "todo-status-complete");
+        }
+
         editButton.setAttribute("class", "todo-edit-button");
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
