@@ -267,11 +267,13 @@ function TodayQuest() {
         const todoTitle = document.createElement("p");
         const todoDueDate = document.createElement("p");
         const todoStatus = document.createElement("p");
+        const viewButton = document.createElement("button");
         const editButton = document.createElement("button");
         const removeButton = document.createElement("button");
         const buttonPointer1 = document.createElement("div");
         const buttonPointer2 = document.createElement("div");
         const buttonPointer3 = document.createElement("div");
+        const buttonPointer4 = document.createElement("div");
 
         //add attributes and content
         todoCard.setAttribute("class", "todo-card");
@@ -289,16 +291,16 @@ function TodayQuest() {
         editButton.textContent = "Edit";
         removeButton.setAttribute("class", "todo-remove-button");
         removeButton.textContent = "Remove";
+        viewButton.setAttribute("class", "todo-view-button");
+        viewButton.textContent = "View";
         buttonPointer1.setAttribute("class", "button-pointer");
         buttonPointer2.setAttribute("class", "button-pointer");
         buttonPointer3.setAttribute("class", "button-pointer");
+        buttonPointer4.setAttribute("class", "button-pointer");
 
         //Button event listeners 
         completeButton.addEventListener("click", function() {
             const appManage = ProjectAndTodo();
-            
-            
-            
             //Re-render
             removeTodayQuestPage();
             //Switch current Todo's status, then use the new returned currentProj to re-render
@@ -311,6 +313,8 @@ function TodayQuest() {
         cardLeft.appendChild(todoTitle);
         cardLeft.appendChild(todoDueDate);
         cardLeft.appendChild(todoStatus);
+        buttonPointer4.appendChild(viewButton);
+        cardRight.appendChild(buttonPointer4);
         buttonPointer2.appendChild(editButton);
         cardRight.appendChild(buttonPointer2);
         buttonPointer3.appendChild(removeButton);
