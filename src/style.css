@@ -143,7 +143,6 @@ dialog {
 .project-container {
     display: flex;
     flex-direction: column;
-    padding: 0 100px;
 }
 
 .project-header {
@@ -190,7 +189,8 @@ dialog {
     font-size: 1.5rem;
 }
 
-.card-left button {
+.card-left button,
+.card-right button {
     font-size: 1rem;
 }
 
@@ -198,10 +198,6 @@ dialog {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.card-right button {
-    font-size: 1rem;
 }
 
 .change-project-name-modal,
@@ -246,4 +242,5 @@ button {
     position: absolute;
     font-size: 1.7rem;
     text-shadow: var(--white-font-text-shadow);
+    
 }
