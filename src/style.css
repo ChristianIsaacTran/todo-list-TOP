@@ -211,7 +211,7 @@ dialog {
 }
 
 .todo-view-modal {
-    padding: 60px;
+    padding: 30px;
 }
 
 .change-project-name-form,
@@ -320,6 +320,13 @@ button {
     grid-row: 2/3;
 }
 
+.description-value {
+    border: 10px ridge grey;;
+    box-shadow: var(--inside-shadow);
+    border-radius: var(--round-border);
+    padding: 10px;
+}
+
 .due-date-label,
 .due-date-value {
     grid-row: 3/4;
@@ -354,3 +361,4 @@ button {
     background: var(--priority-low-gradient);
     text-shadow: var(--button-font-text-shadow);
 }
+
