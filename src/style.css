@@ -16,7 +16,10 @@
     --button-gradient: linear-gradient(rgb(94, 0, 0), red);
     --complete-gradient: linear-gradient(rgb(252, 252, 17), rgb(110, 110, 9));
     --incomplete-gradient: linear-gradient(rgb(109, 33, 33), red);
+    --priority-medium-gradient: linear-gradient(rgb(255, 115, 0), rgb(216, 45, 2));
+    --priority-low-gradient: linear-gradient(rgb(0, 247, 0), rgb(0, 58, 0));
     --button-font-text-shadow: 0px 3px 2px black;
+
 }
 
 *,
@@ -207,12 +210,24 @@ dialog {
     padding: 90px;
 }
 
+.todo-view-modal {
+    padding: 60px;
+}
+
 .change-project-name-form,
-.change-quest-form {
+.change-quest-form,
+.todo-view-modal {
     font-size: 2rem;
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+.todo-view-modal {
+    min-width: 50vw;
+    max-width: 80vw;
+    max-height: 80vh;
+    min-height: 50vh;
 }
 
 .changeP-modal-inputs,
@@ -247,7 +262,8 @@ button {
     
 }
 
-.todo-status-complete {
+.todo-status-complete,
+.completion-value-complete {
     font-size: 1.5rem;
     padding: 5px 30px;
     border-radius: var(--round-button);
@@ -257,12 +273,84 @@ button {
     text-shadow: var(--button-font-text-shadow);
 }
 
-.todo-status-incomplete {
+.todo-status-incomplete,
+.completion-value-incomplete,
+.priority-value-high {
     font-size: 1.5rem;
     padding: 5px 30px;
     border-radius: var(--round-button);
     color: rgb(202, 132, 132);
     font-weight: 900;
     background: var(--incomplete-gradient);
+    text-shadow: var(--button-font-text-shadow);
+}
+
+.completion-value-incomplete,
+.completion-value-complete,
+.priority-value-high,
+.priority-value-medium,
+.priority-value-low {
+    width: 300px;
+    text-align: center;
+}
+
+.todo-info {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: repeat(5, auto);
+    row-gap: 15px;
+    column-gap: 30px;
+}
+
+.title-value,
+.description-value,
+.due-date-value,
+.priority-value,
+.completion-value {
+    grid-column: 2/3;
+}
+
+.title-label,
+.title-value {
+    grid-row: 1/2;
+}
+
+.description-label,
+.description-value {
+    grid-row: 2/3;
+}
+
+.due-date-label,
+.due-date-value {
+    grid-row: 3/4;
+}
+
+.priority-label,
+.priority-value {
+    grid-row: 4/5;
+}
+
+.completion-label,
+.completion-value {
+    grid-row: 5/6;
+}
+
+.priority-value-medium {
+    font-size: 1.5rem;
+    padding: 5px 30px;
+    border-radius: var(--round-button);
+    color: white;
+    font-weight: 900;
+    background: var(--priority-medium-gradient);
+    text-shadow: var(--button-font-text-shadow);
+}
+
+.priority-value-low {
+    font-size: 1.5rem;
+    padding: 5px 30px;
+    border-radius: var(--round-button);
+    color: rgb(0, 255, 234);
+    font-weight: 900;
+    background: var(--priority-low-gradient);
     text-shadow: var(--button-font-text-shadow);
 }

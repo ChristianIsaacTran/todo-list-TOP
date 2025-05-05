@@ -47,6 +47,7 @@ function TodayQuest() {
 
     }
 
+    //PROJECT HEADER generate
     function generateProjHeader(projectHeader, currentProj) {
         const projectName = document.createElement("h2");
         const projHeaderButtons = document.createElement("div");
@@ -76,6 +77,7 @@ function TodayQuest() {
         projectHeader.appendChild(projectName);
         projectHeader.appendChild(projHeaderButtons);
     }
+
 
     function generateChangeQuestModal(projectContainer) {
         const dialog = document.createElement("dialog");
@@ -258,7 +260,7 @@ function TodayQuest() {
         dialog.showModal();
     }
 
-
+    //TODO card generate
     function generateTodoCard(todoContainer, todoObj, currentProj) {
         const todoCard = document.createElement("div");
         const cardLeft = document.createElement("div");
@@ -316,6 +318,11 @@ function TodayQuest() {
             generateTodayQuest(appManage.updateCompleteStatus(todoObj, currentProj));
         });
 
+        viewButton.addEventListener("click", function() {
+            //View the entire todo content of the current todo. 
+            //Display a modal of all of the todo contents
+        });
+
         //Construct HTML elements
         buttonPointer1.appendChild(completeButton);
         cardLeft.appendChild(buttonPointer1);
@@ -333,6 +340,14 @@ function TodayQuest() {
 
         //Add card to todo container
         todoContainer.appendChild(todoCard);
+    }
+
+    function generateViewTodoModal() {
+        const dialog = document.createElement("dialog");
+    }
+
+    function viewTodoHandler() {
+
     }
 
     function checkLocalStorageEmpty() {
@@ -359,6 +374,8 @@ function TodayQuest() {
         todayQuestHeader.remove();
         projectContainer.remove();
     }
+
+    
 
     return { generateTodayQuest };
 }

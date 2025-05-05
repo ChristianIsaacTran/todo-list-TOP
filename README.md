@@ -72,6 +72,7 @@ ProjectAndTodo.js -
 
     remove: completely removes the todo from the project.
 
-    view: will let the user view the entire selected todo in detail, probably through a modal.
+    (will work on this one next) **view: will let the user view the entire selected todo in detail, probably through a modal.
 
 
+**note: max-character length for todo-description is 275 characters
