@@ -25,7 +25,7 @@ function ProjectAndTodo() {
         const tempProj = { name: "Default Project", todos: [
             {title: "Default todo 1",
                 description: "Description goes here",
-                dueDate: "01/01/2025",
+                dueDate: "2025-01-01",
                 priority: "medium",
                 status: "incomplete"}
         ] };

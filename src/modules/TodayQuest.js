@@ -488,7 +488,7 @@ function TodayQuest() {
 
             //re-render page with current todo details
             removeTodayQuestPage();
-            generateTodayQuest(currentProj);
+            generateTodayQuest(appManage.getProject(currentProj.name));
 
 
         });
