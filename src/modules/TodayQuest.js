@@ -325,7 +325,10 @@ function TodayQuest() {
         }); 
 
         removeButton.addEventListener("click", function() {
-            
+            const appManage = ProjectAndTodo();
+            //visually remove todo card, and also remove card from localStorage
+            todoCard.remove();
+            appManage.removeTodo(todoObj.title, currentProj.name);
         });
 
         
