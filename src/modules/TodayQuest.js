@@ -442,7 +442,7 @@ function TodayQuest() {
     }
 
     function viewTodoHandler(todoObj) {
-        const dialog = document.querySelector(`dialog.${todoObj.title.replaceAll(" ", "-")}`);
+        const dialog = document.querySelector(`dialog.${todoObj.title.replaceAll(" ", "-")}.todo-view-modal`);
         dialog.showModal();
     }
 
