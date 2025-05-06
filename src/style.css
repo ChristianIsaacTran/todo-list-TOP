@@ -227,6 +227,15 @@ dialog {
     font-size: 2rem;
 }
 
+.update-todo-modal {
+    min-width: 80vw;
+    max-width: 80vw;
+    max-height: 80vh;
+    min-height: 50vh;
+    padding: 30px;
+    font-size: 2rem;
+}
+
 .changeP-modal-inputs,
 .changeQ-modal-inputs {
     display: flex;
@@ -240,9 +249,15 @@ dialog {
     gap: 50px;
 }
 
-.view-todo-modal-buttons {
+.view-todo-modal-buttons,
+.update-todo-modal-buttons {
     display: flex;
     justify-content: flex-end;
+}
+
+.update-todo-modal-buttons {
+    margin-top: 20px;
+    gap: 50px;
 }
 
 .cancel-button,
@@ -300,6 +315,14 @@ button {
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: repeat(5, auto);
+    row-gap: 15px;
+    column-gap: 30px;
+}
+
+.update-todo-modal-inputs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 100px repeat(3, auto);
     row-gap: 15px;
     column-gap: 30px;
 }
@@ -364,3 +387,21 @@ button {
     text-shadow: var(--button-font-text-shadow);
 }
 
+textarea {
+    resize: none;
+}
+
+.radio-group {
+    display: flex;
+    gap: 50px;
+}
+
+.radio-choices {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+input[type="radio"] {
+    transform: scale(2);
+}

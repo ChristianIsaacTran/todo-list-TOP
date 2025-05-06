@@ -332,10 +332,10 @@ function TodayQuest() {
         });
 
         editButton.addEventListener("click", function() {
-
+            //Open a modal for the todoObj, then use appManage to 
+            //edit the data of the todo, then re-render page to reflect changes.
+            
         });
-
-        
 
         //Construct HTML elements
         buttonPointer1.appendChild(completeButton);
@@ -354,6 +354,14 @@ function TodayQuest() {
 
         //Add card to todo container
         todoContainer.appendChild(todoCard);
+    }
+
+    function generateEditTodoModal(todoObj, todoContainer) {
+        
+    }
+
+    function editTodoHandler(todoObj) {
+
     }
 
     function generateViewTodoModal(todoObj, todoContainer) {

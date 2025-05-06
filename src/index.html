@@ -23,25 +23,40 @@
     </div>
     </div>
     <div id="content">
-        <!-- <dialog class="todo-view-modal" >
-            <div class="todo-info">
-                <p class="title-label">Title:</p>
-                <p class="description-label">Description: </p>
-                <p class="due-date-label">Due Date:</p>
-                <p class="priority-label">Priority:</p>
-                <p class="completion-label">Completion Status:</p>
-                <p class="title-value">Todo 1</p>
-                <p class="description-value">Description goes here. This is a long list of text but then it should wrap
-                    like normal within the padding I hope. When it does I can then mark that text-wrap CSS property is a
-                    success. This is a long list of text but then it should wrap like normal within the padding I hope.</p>
-                <p class="due-date-value">01/01/25</p>
-                <p class="priority-value-low">Low</p>
-                <p class="completion-value-complete">Completed</p>
-            </div>
-            <div class="modal-buttons">
-                <div class="button-pointer"><button type="button" class="close-button">Close</button></div>
-            </div>
-        </dialog> -->
+        <dialog class="update-todo-modal" open>
+            <form class="update-todo-form" action="" method="">
+                <div class="update-todo-modal-inputs">
+                    <label for="title-value">Title:</label>
+                    <input type="text" id="title-value" name="title-value" required>
+                    <label for="description-value">Description:</label>
+                    <textarea id="description-value" name="description-value" placeholder="Max 275 Characters..." maxlength="275" required></textarea>
+                    <label for="due-date-value">Due Date:</label>
+                    <input type="date" id="due-date-value" name="due-date-value" required>
+                    <label for="priority-value">Priority:</label>
+                    <select id="priority-value" name="priority-value"> 
+                        <option value="low" selected>Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <label for="">Completion Status:</label>
+                    <div class="radio-group">
+                        <div class="radio-choices">
+                            <input type="radio" id="incomplete-choice" name="completion-value" value="incomplete" checked>
+                            <label for="incomplete-choice">Incomplete</label>
+                        </div>
+                        <div class="radio-choices">
+                            <input type="radio" id="complete-choice" name="completion-value" value="complete" >
+                            <label for="complete-choice">Complete</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="update-todo-modal-buttons">
+                    <div class="button-pointer"> <button type="button" class="cancel-button">Cancel</button></div>
+                    <div class="button-pointer"><button type="submit" class="submit-button">Submit</button></div>
+                </div>
+            </form>
+        </dialog>
+
     </div>
 </body>
 
