@@ -289,7 +289,7 @@ function TodayQuest() {
         todoDueDate.textContent = todoObj.dueDate;
         todoStatus.textContent = todoObj.status;
 
-        //Construct todo modal for view button
+        //Construct current todo's modal for view button
         generateViewTodoModal(todoObj, todoContainer);
 
         //if statement to apply styling class tag
