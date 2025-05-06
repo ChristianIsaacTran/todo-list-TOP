@@ -293,7 +293,7 @@ function TodayQuest() {
         generateViewTodoModal(todoObj, todoContainer);
 
         //Construct current todo's modal for edit button
-        generateEditTodoModal(todoObj, todoContainer);
+        generateEditTodoModal(todoObj, todoContainer, currentProj);
 
         //if statement to apply styling class tag
         if (todoObj.status === "incomplete") {
@@ -359,7 +359,7 @@ function TodayQuest() {
         todoContainer.appendChild(todoCard);
     }
 
-    function generateEditTodoModal(todoObj, todoContainer) {
+    function generateEditTodoModal(todoObj, todoContainer, currentProj) {
         const dialog = document.createElement("dialog");
         const form = document.createElement("form");
         const formInputContainer = document.createElement("div");
@@ -478,6 +478,17 @@ function TodayQuest() {
             modalData.get("due-date-value") === " " ) {
                 return alert("Error: empty or invalid data entered. Try again.");
             }
+
+            //If the input IS valid, then update the current todo in the localStorage
+            //and re-render page.
+            if(!appManage.updateTodo(todoObj.title, currentProj.name, modalData.get("title-value"), modalData.get("description-value"), modalData.get("due-date-value"), modalData.get("priority-value"), modalData.get("completion-value"))){
+                //If updateTodo fails in anyway, do not close the modal and inform user of error
+                return;
+            }
+
+            //re-render page with current todo details
+            removeTodayQuestPage();
+            generateTodayQuest(currentProj);
 
 
         });

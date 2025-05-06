@@ -222,11 +222,12 @@ function ProjectAndTodo() {
                 // 2. remove the previous todo since we want to swap out the previous todo with the replacement 
                 //    we just made above
                 removeTodo(prevTitleName, projName);
-                return console.log("updateTodo successful");
+                alert("updateTodo successful");
+                return true;
             }
         }
-
-        return console.log("updateTodo not successful");
+        alert("updateTodo not successful");
+        return false;
 
     }
 
