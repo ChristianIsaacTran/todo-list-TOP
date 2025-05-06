@@ -228,7 +228,7 @@ function TodayQuest() {
 
             //remove content THEN re-render page
             removeTodayQuestPage();
-            generateTodayQuest();
+            generateTodayQuest(appManage.getProject(modalData.get("projTitle")));
 
             dialog.close();
         });
