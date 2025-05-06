@@ -68,7 +68,6 @@ function TodayQuest() {
         buttonPointer1.setAttribute("class", "button-pointer");
         buttonPointer2.setAttribute("class", "button-pointer");
 
-
         //Construct the HTML elements together
         buttonPointer1.appendChild(changeProjNameButton);
         buttonPointer2.appendChild(changeQuestButton);
@@ -228,7 +227,7 @@ function TodayQuest() {
 
             //remove content THEN re-render page
             removeTodayQuestPage();
-            generateTodayQuest(appManage.getProject(modalData.get("projTitle")));
+            generateTodayQuest(appManage.getProject(modalData.get("projTitle"))); //Get the CHANGED project object
 
             dialog.close();
         });
@@ -414,24 +413,39 @@ function TodayQuest() {
         titleValue.setAttribute("type", "text");
         titleValue.setAttribute("name", "title-value");
         titleValue.setAttribute("required", "");
+        titleValue.setAttribute("maxlength", "20");
+        titleValue.setAttribute("value", todoObj.title);
         descriptionValue.setAttribute("id", "description-value");
         descriptionValue.setAttribute("name", "description-value");
         descriptionValue.setAttribute("placeholder", "Max 275 Characters...");
         descriptionValue.setAttribute("maxlength", "275");
         descriptionValue.setAttribute("required", "");
+        descriptionValue.textContent = todoObj.description;
         dueDateValue.setAttribute("type", "date");
         dueDateValue.setAttribute("id", "due-date-value");
         dueDateValue.setAttribute("name", "due-date-value");
         dueDateValue.setAttribute("required", "");
+        dueDateValue.setAttribute("value", todoObj.dueDate);
         priorityValue.setAttribute("id", "priority-value");
         priorityValue.setAttribute("name", "priority-value");
         priorityOptionLow.setAttribute("value", "low");
-        priorityOptionLow.setAttribute("selected", "");
         priorityOptionLow.textContent = "Low";
         priorityOptionMedium.setAttribute("value", "medium");
         priorityOptionMedium.textContent = "Medium";
         priorityOptionHigh.setAttribute("value", "high");
         priorityOptionHigh.textContent = "High";
+
+        //set priority option's default value to whatever the current todo object is
+        if(todoObj.priority === "low") {
+            priorityOptionLow.setAttribute("selected", "");
+        }
+        else if(todoObj.priority === "medium") {
+            priorityOptionMedium.setAttribute("selected", "");
+        }
+        else if(todoObj.priority === "high") {
+            priorityOptionHigh.setAttribute("selected", "");
+        }
+
         radioGroup.setAttribute("class", "radio-group");
         radioChoice1.setAttribute("class", "radio-choices");
         radioChoice2.setAttribute("class", "radio-choices");
@@ -439,11 +453,19 @@ function TodayQuest() {
         completionChoiceIncompleteValue.setAttribute("id", "incomplete-choice");
         completionChoiceIncompleteValue.setAttribute("name", "completion-value");
         completionChoiceIncompleteValue.setAttribute("value", "incomplete");
-        completionChoiceIncompleteValue.setAttribute("checked", "");
         completionChoiceCompleteValue.setAttribute("type", "radio");
         completionChoiceCompleteValue.setAttribute("id", "complete-choice");
         completionChoiceCompleteValue.setAttribute("name", "completion-value");
         completionChoiceCompleteValue.setAttribute("value", "complete");
+
+        //set completion value to whatever the current todo object is
+        if(todoObj.status === "incomplete") {
+            completionChoiceIncompleteValue.setAttribute("checked", "");
+        }
+        else {
+            completionChoiceCompleteValue.setAttribute("checked", "");
+        }
+
         updateTodoModalButtonContainer.setAttribute("class", "update-todo-modal-buttons");
         buttonPointer1.setAttribute("class", "button-pointer");
         buttonPointer2.setAttribute("class", "button-pointer");
