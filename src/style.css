@@ -336,12 +336,14 @@ button {
 }
 
 .title-label,
-.title-value {
+.title-value,
+#title-value {
     grid-row: 1/2;
 }
 
 .description-label,
-.description-value {
+.description-value,
+#description-value {
     grid-row: 2/3;
 }
 
@@ -353,17 +355,20 @@ button {
 }
 
 .due-date-label,
-.due-date-value {
+.due-date-value,
+#due-date-value {
     grid-row: 3/4;
 }
 
 .priority-label,
-.priority-value {
+.priority-value,
+#priority-value {
     grid-row: 4/5;
 }
 
 .completion-label,
-.completion-value {
+.completion-value,
+#completion-value {
     grid-row: 5/6;
 }
 

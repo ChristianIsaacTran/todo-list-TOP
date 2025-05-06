@@ -357,6 +357,40 @@ function TodayQuest() {
     }
 
     function generateEditTodoModal(todoObj, todoContainer) {
+        const dialog = document.createElement("dialog");
+        const form = document.createElement("form");
+        const formInputContainer = document.createElement("div");
+        const titleLabel = document.createElement("label");
+        const descriptionLabel = document.createElement("label");
+        const dueDateLabel = document.createElement("label");
+        const priorityLabel = document.createElement("label");
+        const completionLabel = document.createElement("label");
+        const titleValue = document.createElement("input");
+        const descriptionValue = document.createElement("textarea");
+        const dueDateValue = document.createElement("input");
+        const priorityValue = document.createElement("select");
+        const priorityOptionLow = document.createElement("option");
+        const priorityOptionMedium = document.createElement("option");
+        const priorityOptionHigh = document.createElement("option");
+        const radioGroup = document.createElement("div");
+        const radioChoice1 = document.createElement("div");
+        const radioChoice2 = document.createElement("div");
+        const completionChoiceIncompleteLabel = document.createElement("label");
+        const completionChoiceIncompleteValue = document.createElement("input");
+        const completionChoiceCompleteLabel = document.createElement("label");
+        const completionChoiceCompleteValue = document.createElement("input");
+        const updateTodoModalButtonContainer = document.createElement("div");
+        const buttonPointer1 = document.createElement("div");
+        const buttonPointer2 = document.createElement("div");
+        const cancelButton = document.createElement("button");
+        const submitButton = document.createElement("button");
+
+        //add attributes and content
+
+
+        //button event listeners
+
+        //construct html
         
     }
 

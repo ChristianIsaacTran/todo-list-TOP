@@ -26,19 +26,19 @@
         <dialog class="update-todo-modal" open>
             <form class="update-todo-form" action="" method="">
                 <div class="update-todo-modal-inputs">
-                    <label for="title-value">Title:</label>
+                    <label class="title-label" for="title-value">Title:</label>
                     <input type="text" id="title-value" name="title-value" required>
-                    <label for="description-value">Description:</label>
+                    <label class="description-label" for="description-value">Description:</label>
                     <textarea id="description-value" name="description-value" placeholder="Max 275 Characters..." maxlength="275" required></textarea>
-                    <label for="due-date-value">Due Date:</label>
+                    <label class="due-date-label" for="due-date-value">Due Date:</label>
                     <input type="date" id="due-date-value" name="due-date-value" required>
-                    <label for="priority-value">Priority:</label>
+                    <label class="priority-label" for="priority-value">Priority:</label>
                     <select id="priority-value" name="priority-value"> 
                         <option value="low" selected>Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
                     </select>
-                    <label for="">Completion Status:</label>
+                    <label class="completion-label" for="">Completion Status:</label>
                     <div class="radio-group">
                         <div class="radio-choices">
                             <input type="radio" id="incomplete-choice" name="completion-value" value="incomplete" checked>
