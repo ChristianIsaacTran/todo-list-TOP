@@ -30,7 +30,7 @@ function TodayQuest() {
         //Generate html modals for edit/change options
         generateChangeProjNameModal(projectContainer, currentProj);
         generateChangeQuestModal(projectContainer);
-        
+
         //Generate project header
         generateProjHeader(projectHeader, currentProj);
 
@@ -110,7 +110,7 @@ function TodayQuest() {
         const LSkeys = appManage.getAllProjectKeys(); //Gets an array of all project keys in localStorage
 
         //Loop through all keys in localStorage and add them to dataList
-        for(let key of LSkeys) {
+        for (let key of LSkeys) {
             const option = document.createElement("option");
             option.setAttribute("value", key);
             changeProjList.appendChild(option);
@@ -128,12 +128,12 @@ function TodayQuest() {
         submitButton.textContent = "Submit";
 
         //cancel and submit button events
-        cancelButton.addEventListener("click", function() {
+        cancelButton.addEventListener("click", function () {
             form.reset();
             dialog.close();
         });
 
-        submitButton.addEventListener("click", function(event) {
+        submitButton.addEventListener("click", function (event) {
             event.preventDefault();
             const appManage = ProjectAndTodo();
             const modalData = new FormData(form);
@@ -143,7 +143,7 @@ function TodayQuest() {
                 return alert("Error: Empty or blank text. Please enter a valid project name.");
             }
 
-            if(!appManage.getProject(modalData.get("project-choice"))) {
+            if (!appManage.getProject(modalData.get("project-choice"))) {
                 return;
             }
 
@@ -292,11 +292,14 @@ function TodayQuest() {
         //Construct current todo's modal for view button
         generateViewTodoModal(todoObj, todoContainer);
 
+        //Construct current todo's modal for edit button
+        generateEditTodoModal(todoObj, todoContainer);
+
         //if statement to apply styling class tag
-        if(todoObj.status === "incomplete") {
+        if (todoObj.status === "incomplete") {
             todoStatus.setAttribute("class", "todo-status-incomplete");
         }
-        else{
+        else {
             todoStatus.setAttribute("class", "todo-status-complete");
         }
 
@@ -312,7 +315,7 @@ function TodayQuest() {
         buttonPointer4.setAttribute("class", "button-pointer");
 
         //Button event listeners 
-        completeButton.addEventListener("click", function() {
+        completeButton.addEventListener("click", function () {
             const appManage = ProjectAndTodo();
             //Re-render
             removeTodayQuestPage();
@@ -320,21 +323,21 @@ function TodayQuest() {
             generateTodayQuest(appManage.updateCompleteStatus(todoObj, currentProj));
         });
 
-        viewButton.addEventListener("click", function() {
+        viewButton.addEventListener("click", function () {
             viewTodoHandler(todoObj);
-        }); 
+        });
 
-        removeButton.addEventListener("click", function() {
+        removeButton.addEventListener("click", function () {
             const appManage = ProjectAndTodo();
             //visually remove todo card, and also remove card from localStorage
             todoCard.remove();
             appManage.removeTodo(todoObj.title, currentProj.name);
         });
 
-        editButton.addEventListener("click", function() {
+        editButton.addEventListener("click", function () {
             //Open a modal for the todoObj, then use appManage to 
             //edit the data of the todo, then re-render page to reflect changes.
-            
+            editTodoHandler(todoObj);
         });
 
         //Construct HTML elements
@@ -386,16 +389,134 @@ function TodayQuest() {
         const submitButton = document.createElement("button");
 
         //add attributes and content
-
+        dialog.setAttribute("class", `${todoObj.title.replaceAll(" ", "-")} update-todo-modal`);
+        form.setAttribute("class", "update-todo-form");
+        formInputContainer.setAttribute("class", "update-todo-modal-inputs");
+        titleLabel.setAttribute("class", "title-label");
+        titleLabel.setAttribute("for", "title-value");
+        titleLabel.textContent = "Title:";
+        descriptionLabel.setAttribute("class", "description-label");
+        descriptionLabel.setAttribute("for", "description-value");
+        descriptionLabel.textContent = "Description:";
+        dueDateLabel.setAttribute("class", "due-date-label");
+        dueDateLabel.setAttribute("for", "due-date-value");
+        dueDateLabel.textContent = "Due Date:";
+        priorityLabel.setAttribute("class", "priority-label");
+        priorityLabel.setAttribute("for", "priority-value");
+        priorityLabel.textContent = "Priority:";
+        completionLabel.setAttribute("class", "completion-label");
+        completionLabel.textContent = "Completion Status:";
+        completionChoiceIncompleteLabel.setAttribute("for", "incomplete-choice");
+        completionChoiceIncompleteLabel.textContent = "Incomplete";
+        completionChoiceCompleteLabel.setAttribute("for", "complete-choice");
+        completionChoiceCompleteLabel.textContent = "Complete";
+        titleValue.setAttribute("id", "title-value");
+        titleValue.setAttribute("type", "text");
+        titleValue.setAttribute("name", "title-value");
+        titleValue.setAttribute("required", "");
+        descriptionValue.setAttribute("id", "description-value");
+        descriptionValue.setAttribute("name", "description-value");
+        descriptionValue.setAttribute("placeholder", "Max 275 Characters...");
+        descriptionValue.setAttribute("maxlength", "275");
+        descriptionValue.setAttribute("required", "");
+        dueDateValue.setAttribute("type", "date");
+        dueDateValue.setAttribute("id", "due-date-value");
+        dueDateValue.setAttribute("name", "due-date-value");
+        dueDateValue.setAttribute("required", "");
+        priorityValue.setAttribute("id", "priority-value");
+        priorityValue.setAttribute("name", "priority-value");
+        priorityOptionLow.setAttribute("value", "low");
+        priorityOptionLow.setAttribute("selected", "");
+        priorityOptionLow.textContent = "Low";
+        priorityOptionMedium.setAttribute("value", "medium");
+        priorityOptionMedium.textContent = "Medium";
+        priorityOptionHigh.setAttribute("value", "high");
+        priorityOptionHigh.textContent = "High";
+        radioGroup.setAttribute("class", "radio-group");
+        radioChoice1.setAttribute("class", "radio-choices");
+        radioChoice2.setAttribute("class", "radio-choices");
+        completionChoiceIncompleteValue.setAttribute("type", "radio");
+        completionChoiceIncompleteValue.setAttribute("id", "incomplete-choice");
+        completionChoiceIncompleteValue.setAttribute("name", "completion-value");
+        completionChoiceIncompleteValue.setAttribute("value", "incomplete");
+        completionChoiceIncompleteValue.setAttribute("checked", "");
+        completionChoiceCompleteValue.setAttribute("type", "radio");
+        completionChoiceCompleteValue.setAttribute("id", "complete-choice");
+        completionChoiceCompleteValue.setAttribute("name", "completion-value");
+        completionChoiceCompleteValue.setAttribute("value", "complete");
+        updateTodoModalButtonContainer.setAttribute("class", "update-todo-modal-buttons");
+        buttonPointer1.setAttribute("class", "button-pointer");
+        buttonPointer2.setAttribute("class", "button-pointer");
+        cancelButton.setAttribute("type", "button");
+        cancelButton.setAttribute("class", "cancel-button");
+        cancelButton.textContent = "Cancel";
+        submitButton.setAttribute("type", "submit");
+        submitButton.setAttribute("class", "submit-button");
+        submitButton.textContent = "Submit";
 
         //button event listeners
+        cancelButton.addEventListener("click", function () {
+            //Reset form and close the modal
+            form.reset();
+            dialog.close();
+        });
+
+        submitButton.addEventListener("click", function (e) {
+            e.preventDefault(); //Prevent submit action since no backend
+            const appManage = ProjectAndTodo(); //For app manipulation
+            const modalData = new FormData(form);
+            //Do this in a little bit
+            //When the form is submitted, overwrite the data
+            //of the current todo in localStorage, then re-render page
+
+            //Check for empty/invalid form data entries
+            if (modalData.get("title-value") === "" || 
+            modalData.get("title-value") === " " ||
+            modalData.get("description-value") === "" ||
+            modalData.get("description-value") === " " ||
+            modalData.get("due-date-value") === "" ||
+            modalData.get("due-date-value") === " " ) {
+                return alert("Error: empty or invalid data entered. Try again.");
+            }
+
+
+        });
 
         //construct html
-        
+        formInputContainer.appendChild(titleLabel);
+        formInputContainer.appendChild(titleValue);
+        formInputContainer.appendChild(descriptionLabel);
+        formInputContainer.appendChild(descriptionValue);
+        formInputContainer.appendChild(dueDateLabel);
+        formInputContainer.appendChild(dueDateValue);
+        formInputContainer.appendChild(priorityLabel);
+        priorityValue.appendChild(priorityOptionLow);
+        priorityValue.appendChild(priorityOptionMedium);
+        priorityValue.appendChild(priorityOptionHigh);
+        formInputContainer.appendChild(priorityValue);
+        formInputContainer.appendChild(completionLabel);
+        radioChoice1.appendChild(completionChoiceIncompleteValue);
+        radioChoice1.appendChild(completionChoiceIncompleteLabel);
+        radioChoice2.appendChild(completionChoiceCompleteValue);
+        radioChoice2.appendChild(completionChoiceCompleteLabel);
+        radioGroup.appendChild(radioChoice1);
+        radioGroup.appendChild(radioChoice2);
+        formInputContainer.appendChild(radioGroup);
+        buttonPointer1.appendChild(cancelButton);
+        buttonPointer2.appendChild(submitButton);
+        updateTodoModalButtonContainer.appendChild(buttonPointer1);
+        updateTodoModalButtonContainer.appendChild(buttonPointer2);
+        form.appendChild(formInputContainer);
+        form.appendChild(updateTodoModalButtonContainer);
+        dialog.appendChild(form);
+
+        //Append modal/dialog to todoContainer
+        todoContainer.appendChild(dialog);
     }
 
     function editTodoHandler(todoObj) {
-
+        const dialog = document.querySelector(`dialog.${todoObj.title.replaceAll(" ", "-")}.update-todo-modal`);
+        dialog.showModal();
     }
 
     function generateViewTodoModal(todoObj, todoContainer) {
@@ -419,15 +540,15 @@ function TodayQuest() {
         dialog.setAttribute("class", `${todoObj.title.replaceAll(" ", "-")} todo-view-modal`);
         todoInfo.setAttribute("class", "todo-info");
         titleLabel.setAttribute("class", "title-label");
-        descriptionLabel.setAttribute("class","description-label");
-        dueDateLabel.setAttribute("class","due-date-label");
-        priorityLabel.setAttribute("class","priority-label");
-        completionLabel.setAttribute("class","completion-label");
-        titleValue.setAttribute("class","title-value");
+        descriptionLabel.setAttribute("class", "description-label");
+        dueDateLabel.setAttribute("class", "due-date-label");
+        priorityLabel.setAttribute("class", "priority-label");
+        completionLabel.setAttribute("class", "completion-label");
+        titleValue.setAttribute("class", "title-value");
         titleValue.textContent = todoObj.title;
-        descriptionValue.setAttribute("class","description-value");
+        descriptionValue.setAttribute("class", "description-value");
         descriptionValue.textContent = todoObj.description;
-        dueDateValue.setAttribute("class","due-date-value");
+        dueDateValue.setAttribute("class", "due-date-value");
         dueDateValue.textContent = todoObj.dueDate;
         titleLabel.textContent = "Title:";
         descriptionLabel.textContent = "Description:";
@@ -439,33 +560,33 @@ function TodayQuest() {
         closeButton.setAttribute("class", "close-button");
         closeButton.setAttribute("type", "button");
         closeButton.textContent = "Close";
-        
+
         //priority if statement class label
-        if(todoObj.priority === "low") {
-            priorityValue.setAttribute("class","priority-value-low");
+        if (todoObj.priority === "low") {
+            priorityValue.setAttribute("class", "priority-value-low");
             priorityValue.textContent = "low";
         }
         else if (todoObj.priority === "medium") {
-            priorityValue.setAttribute("class","priority-value-medium");
+            priorityValue.setAttribute("class", "priority-value-medium");
             priorityValue.textContent = "medium";
         }
         else if (todoObj.priority === "high") {
-            priorityValue.setAttribute("class","priority-value-high");
+            priorityValue.setAttribute("class", "priority-value-high");
             priorityValue.textContent = "high";
         }
 
         //completion if statement class label
-        if(todoObj.status === "incomplete") {
-            completionValue.setAttribute("class","completion-value-incomplete");
+        if (todoObj.status === "incomplete") {
+            completionValue.setAttribute("class", "completion-value-incomplete");
             completionValue.textContent = "incomplete";
         }
         else {
-            completionValue.setAttribute("class","completion-value-complete");
+            completionValue.setAttribute("class", "completion-value-complete");
             completionValue.textContent = "complete";
         }
 
         //Button event listeners
-        closeButton.addEventListener("click", function() {
+        closeButton.addEventListener("click", function () {
             dialog.close();
         });
 
@@ -520,7 +641,7 @@ function TodayQuest() {
         projectContainer.remove();
     }
 
-    
+
 
     return { generateTodayQuest };
 }
