@@ -324,6 +324,7 @@ function TodayQuest() {
             viewTodoHandler(todoObj);
         }); 
 
+
         
 
         //Construct HTML elements
