@@ -324,6 +324,9 @@ function TodayQuest() {
             viewTodoHandler(todoObj);
         }); 
 
+        removeButton.addEventListener("click", function() {
+            
+        });
 
         
 
@@ -439,7 +442,7 @@ function TodayQuest() {
     }
 
     function viewTodoHandler(todoObj) {
-        const dialog = document.querySelector(`.${todoObj.title.replaceAll(" ", "-")}`);
+        const dialog = document.querySelector(`dialog.${todoObj.title.replaceAll(" ", "-")}`);
         dialog.showModal();
     }
 
