@@ -331,6 +331,10 @@ function TodayQuest() {
             appManage.removeTodo(todoObj.title, currentProj.name);
         });
 
+        editButton.addEventListener("click", function() {
+
+        });
+
         
 
         //Construct HTML elements

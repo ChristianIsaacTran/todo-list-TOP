@@ -68,11 +68,16 @@ ProjectAndTodo.js -
     -- Todo Buttons: 
     (Done) Complete button: Confirmed working 5/1/2025. toggles a crossed out faded thing to indicate the todo is completed.
 
-    Edit: Edit the todo properties and update them.
+    (working on this next!!!) **Edit: Edit the todo properties and update them.
     **note: max-character length for todo-description is 275 characters
 
-    (Doing this one next!) **remove: completely removes the todo from the project.
+    (Done)remove: Confirmed working 5/5/2025. completely removes the todo from the project visually, and also from localStorage.
 
     (Done) view: Confirmed working 5/5/2025. Will let the user view the entire selected todo in detail, probably through a modal.
 
+    -- Create todo menu
+
+    -- Create Project menu
+
+    -- View all projects page
 
