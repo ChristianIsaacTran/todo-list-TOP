@@ -287,8 +287,10 @@ function TodayQuest() {
         todoTitle.textContent = todoObj.title;
         todoDueDate.setAttribute("class", "todo-due-date");
         todoDueDate.textContent = todoObj.dueDate;
-        
         todoStatus.textContent = todoObj.status;
+
+        //Construct todo modal for view button
+        generateViewTodoModal(todoObj, todoContainer);
 
         //if statement to apply styling class tag
         if(todoObj.status === "incomplete") {
@@ -319,9 +321,10 @@ function TodayQuest() {
         });
 
         viewButton.addEventListener("click", function() {
-            //View the entire todo content of the current todo. 
-            //Display a modal of all of the todo contents
-        });
+            viewTodoHandler(todoObj);
+        }); 
+
+        
 
         //Construct HTML elements
         buttonPointer1.appendChild(completeButton);
@@ -342,12 +345,101 @@ function TodayQuest() {
         todoContainer.appendChild(todoCard);
     }
 
-    function generateViewTodoModal() {
+    function generateViewTodoModal(todoObj, todoContainer) {
         const dialog = document.createElement("dialog");
+        const todoInfo = document.createElement("div");
+        const titleLabel = document.createElement("p");
+        const descriptionLabel = document.createElement("p");
+        const dueDateLabel = document.createElement("p");
+        const priorityLabel = document.createElement("p");
+        const completionLabel = document.createElement("p");
+        const titleValue = document.createElement("p");
+        const descriptionValue = document.createElement("p");
+        const dueDateValue = document.createElement("p");
+        const priorityValue = document.createElement("p");
+        const completionValue = document.createElement("p");
+        const modalButtonContainer = document.createElement("div");
+        const closeButton = document.createElement("button");
+        const buttonPointer = document.createElement("div");
+
+        //add attributes and content
+        dialog.setAttribute("class", `${todoObj.title.replaceAll(" ", "-")} todo-view-modal`);
+        todoInfo.setAttribute("class", "todo-info");
+        titleLabel.setAttribute("class", "title-label");
+        descriptionLabel.setAttribute("class","description-label");
+        dueDateLabel.setAttribute("class","due-date-label");
+        priorityLabel.setAttribute("class","priority-label");
+        completionLabel.setAttribute("class","completion-label");
+        titleValue.setAttribute("class","title-value");
+        titleValue.textContent = todoObj.title;
+        descriptionValue.setAttribute("class","description-value");
+        descriptionValue.textContent = todoObj.description;
+        dueDateValue.setAttribute("class","due-date-value");
+        dueDateValue.textContent = todoObj.dueDate;
+        titleLabel.textContent = "Title:";
+        descriptionLabel.textContent = "Description:";
+        dueDateLabel.textContent = "Due Date:";
+        priorityLabel.textContent = "Priority:";
+        completionLabel.textContent = "Completion Status:";
+        modalButtonContainer.setAttribute("class", "view-todo-modal-buttons");
+        buttonPointer.setAttribute("class", "button-pointer");
+        closeButton.setAttribute("class", "close-button");
+        closeButton.setAttribute("type", "button");
+        closeButton.textContent = "Close";
+        
+        //priority if statement class label
+        if(todoObj.priority === "low") {
+            priorityValue.setAttribute("class","priority-value-low");
+            priorityValue.textContent = "low";
+        }
+        else if (todoObj.priority === "medium") {
+            priorityValue.setAttribute("class","priority-value-medium");
+            priorityValue.textContent = "medium";
+        }
+        else if (todoObj.priority === "high") {
+            priorityValue.setAttribute("class","priority-value-high");
+            priorityValue.textContent = "high";
+        }
+
+        //completion if statement class label
+        if(todoObj.status === "incomplete") {
+            completionValue.setAttribute("class","completion-value-incomplete");
+            completionValue.textContent = "incomplete";
+        }
+        else {
+            completionValue.setAttribute("class","completion-value-complete");
+            completionValue.textContent = "complete";
+        }
+
+        //Button event listeners
+        closeButton.addEventListener("click", function() {
+            dialog.close();
+        });
+
+        //Construct HTML elements
+        todoInfo.appendChild(titleLabel);
+        todoInfo.appendChild(descriptionLabel);
+        todoInfo.appendChild(dueDateLabel);
+        todoInfo.appendChild(priorityLabel);
+        todoInfo.appendChild(completionLabel);
+        todoInfo.appendChild(titleValue);
+        todoInfo.appendChild(descriptionValue);
+        todoInfo.appendChild(dueDateValue);
+        todoInfo.appendChild(priorityValue);
+        todoInfo.appendChild(completionValue);
+        buttonPointer.appendChild(closeButton);
+        modalButtonContainer.appendChild(buttonPointer);
+        dialog.appendChild(todoInfo);
+        dialog.appendChild(modalButtonContainer);
+
+
+        //Add todo modal to todoContainer
+        todoContainer.appendChild(dialog);
     }
 
-    function viewTodoHandler() {
-
+    function viewTodoHandler(todoObj) {
+        const dialog = document.querySelector(`.${todoObj.title.replaceAll(" ", "-")}`);
+        dialog.showModal();
     }
 
     function checkLocalStorageEmpty() {

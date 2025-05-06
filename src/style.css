@@ -210,13 +210,8 @@ dialog {
     padding: 90px;
 }
 
-.todo-view-modal {
-    padding: 30px;
-}
-
 .change-project-name-form,
-.change-quest-form,
-.todo-view-modal {
+.change-quest-form {
     font-size: 2rem;
     display: flex;
     flex-direction: column;
@@ -228,6 +223,8 @@ dialog {
     max-width: 80vw;
     max-height: 80vh;
     min-height: 50vh;
+    padding: 30px;
+    font-size: 2rem;
 }
 
 .changeP-modal-inputs,
@@ -241,6 +238,11 @@ dialog {
     display: flex;
     align-self: flex-end;
     gap: 50px;
+}
+
+.view-todo-modal-buttons {
+    display: flex;
+    justify-content: flex-end;
 }
 
 .cancel-button,
