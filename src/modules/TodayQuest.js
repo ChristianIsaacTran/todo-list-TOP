@@ -344,7 +344,7 @@ function TodayQuest() {
         cardLeft.appendChild(buttonPointer1);
         cardLeft.appendChild(todoTitle);
         cardLeft.appendChild(todoDueDate);
-        cardLeft.appendChild(todoStatus);
+        cardRight.appendChild(todoStatus);
         buttonPointer4.appendChild(viewButton);
         cardRight.appendChild(buttonPointer4);
         buttonPointer2.appendChild(editButton);
