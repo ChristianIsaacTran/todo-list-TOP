@@ -180,7 +180,7 @@ dialog {
 .todo-card {
     display: flex;
     justify-content: space-between;
-    gap: 50px;
+    gap: 10px;
 
 }
 
@@ -202,7 +202,6 @@ dialog {
 .card-right {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
 .change-project-name-modal,
@@ -300,6 +299,11 @@ button {
     font-weight: 900;
     background: var(--incomplete-gradient);
     text-shadow: var(--button-font-text-shadow);
+}
+
+.todo-status-incomplete,
+.todo-status-complete {
+    padding: 5px 15px;
 }
 
 .completion-value-incomplete,
@@ -409,4 +413,8 @@ textarea {
 
 input[type="radio"] {
     transform: scale(2);
+}
+
+.todo-due-date {
+    min-width: 128px;
 }
