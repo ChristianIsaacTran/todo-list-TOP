@@ -501,6 +501,7 @@ function TodayQuest() {
                 return alert("Error: empty or invalid data entered. Try again.");
             }
 
+
             //If the input IS valid, then update the current todo in the localStorage
             //and re-render page.
             if(!appManage.updateTodo(todoObj.title, currentProj.name, modalData.get("title-value"), modalData.get("description-value"), modalData.get("due-date-value"), modalData.get("priority-value"), modalData.get("completion-value"))){
@@ -511,8 +512,7 @@ function TodayQuest() {
             //re-render page with current todo details
             removeTodayQuestPage();
             generateTodayQuest(appManage.getProject(currentProj.name));
-
-
+            dialog.close();
         });
 
         //construct html

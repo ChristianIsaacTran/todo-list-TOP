@@ -131,16 +131,10 @@ function ProjectAndTodo() {
         //add new todo to project in local storage, IF there isnt an exact named todo in the project already
         const tempProj = getProject(projName);
         if (!tempProj) {
-            console.log("Project doesn't exist, createTodo not successful")
+            alert("Error: Project doesn't exist, createTodo not successful")
             return false;
         }
-        //Check if the exact todo already exists for the selected project
-        for (let todoObj of tempProj.todos) {
-            if (todoObj.title === tempTodo.title) {
-                console.log("Todo already exists for this project!, createTodo not successful");
-                return false; //if unsuccessful creation, send a false request
-            }
-        }
+        
 
         //If it doesn't exist, then add it to the todo list of the given project
         tempProj.todos.push(tempTodo);
@@ -222,16 +216,13 @@ function ProjectAndTodo() {
                 // 2. remove the previous todo since we want to swap out the previous todo with the replacement 
                 //    we just made above
                 removeTodo(prevTitleName, projName);
-                alert("updateTodo successful");
+                console.log("updateTodo successful");
                 return true;
             }
         }
         alert("updateTodo not successful");
         return false;
-
     }
-
-
 
     return { createProject, createDefaultProject, removeProject, getProject, updateProjectName, getLastProject, getAllProjectKeys, createTodo, getTodo, removeTodo, updateTodo, updateCompleteStatus };
 }
