@@ -175,6 +175,8 @@ dialog {
     gap: 30px;
     flex-shrink: 0;
     min-width: 1030px;
+    max-height: 650px;
+    overflow: auto;
 }
 
 .todo-card {
@@ -203,6 +205,7 @@ dialog {
     display: flex;
     align-items: center;
     gap: 5px;
+    position: relative;
 }
 
 .change-project-name-modal,
