@@ -422,3 +422,35 @@ input[type="radio"] {
 .todo-due-date {
     min-width: 128px;
 }
+
+.create-project-title {
+    font-size: 6rem;
+}
+
+.new-project-label {
+    font-size: 2rem;
+}
+
+#project-name-value {
+    padding: 10px;
+}
+
+.create-project-inputs {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.create-project-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 100px;
+}
+
+.create-project-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}

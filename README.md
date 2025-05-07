@@ -68,16 +68,25 @@ ProjectAndTodo.js -
     -- Todo Buttons: 
     (Done) Complete button: Confirmed working 5/1/2025. toggles a crossed out faded thing to indicate the todo is completed.
 
-    (working on this next!!!) **Edit: Edit the todo properties and update them.
+    (Done) Edit: Confirmed working 5/6/2025. Edit the todo properties and update them.
+    Also used date-fns to format the dates
+    
     **note: max-character length for todo-description is 275 characters
 
     (Done)remove: Confirmed working 5/5/2025. completely removes the todo from the project visually, and also from localStorage.
 
     (Done) view: Confirmed working 5/5/2025. Will let the user view the entire selected todo in detail, probably through a modal.
 
-    -- Create todo menu
+    (working on this now) **-- Create todo menu:
+    Switch to a separate page/menu where it is similar to the edit button modal 
+    where the user can enter any information and submit it, then it will add it to 
+    a chosen project and confirms with the user that it has been added.
 
     -- Create Project menu
+    Same thing as the create todo menu but for projects. Have a form that lets users
+    input the project name and creates a new project in the localStorage. confirms with 
+    the user if the project is successfully added.
 
     -- View all projects page
-
+    A grid/flex that cascades and displays all of the project names in a card format,
+    similar to the todo card list. Will be scrollable if overflow.

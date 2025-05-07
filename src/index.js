@@ -1,6 +1,7 @@
 import "./style.css";
 import  ProjectAndTodo from "./modules/ProjectAndTodo.js";
 import TodayQuest from "./modules/TodayQuest.js";
+import CreateProject from "./modules/CreateProject.js";
 
 //The entry point of the project. Import module 
 //pages here.
@@ -11,6 +12,10 @@ const appManage = ProjectAndTodo();
 
 const todayQuestPage = TodayQuest();
 
+const createProjectPage = CreateProject();
+
+
+
 // appManage.createProject("project 1");
 // appManage.createProject("project 2");
 
@@ -19,7 +24,9 @@ const todayQuestPage = TodayQuest();
 // appManage.createTodo("todo 4", "this is another description.","01/01/20","high","incomplete", "Default Project");
 
 //First time render, or page open render
-todayQuestPage.generateTodayQuest();
+// todayQuestPage.generateTodayQuest();
+
+createProjectPage.generateCreateProject();
 
 
 
