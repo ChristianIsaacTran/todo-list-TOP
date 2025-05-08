@@ -46,7 +46,8 @@ function CreateProject() {
                 return;
             }
 
-            //Reset form after a successful submission
+            //Reset form after a successful submission and inform user
+            alert("Submission successful. Created Project.");
             form.reset()
         });
 
