@@ -79,7 +79,7 @@ ProjectAndTodo.js -
 
     (Done) view: Confirmed working 5/5/2025. Will let the user view the entire selected todo in detail, probably through a modal.
 
-    (Working on this) ** -- Create todo menu:
+    (Done) Confirmed working 5/8/2025 -- Create todo menu:
     Switch to a separate page/menu where it is similar to the edit button modal 
     where the user can enter any information and submit it, then it will add it to 
     a chosen project and confirms with the user that it has been added.
@@ -89,6 +89,6 @@ ProjectAndTodo.js -
     input the project name and creates a new project in the localStorage. confirms with 
     the user if the project is successfully added.
 
-    -- View all projects page
+   (working on this currently) -- View all projects page
     A grid/flex that cascades and displays all of the project names in a card format,
     similar to the todo card list. Will be scrollable if overflow.

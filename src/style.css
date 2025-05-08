@@ -516,3 +516,41 @@ input[type="radio"] {
     display: flex;
     justify-content: left;
 }
+
+.view-projects-header {
+    display: flex;
+    justify-content: center;
+}
+
+.view-projects-title {
+    font-size: 6rem;
+}
+
+.view-projects-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.view-projects-menu {
+    border: 10px ridge grey;;
+    box-shadow: var(--inside-shadow);
+    border-radius: var(--round-border);
+    width: 1135px;
+    max-height: 716px;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 20px;
+    overflow: auto;
+}
+
+.project-card {
+    border: 10px ridge grey;;
+    box-shadow: var(--inside-shadow);
+    border-radius: var(--round-border);
+    padding: 50px;
+    display: flex;
+    flex: 0 1 auto;
+}
