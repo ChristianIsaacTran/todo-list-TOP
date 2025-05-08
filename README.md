@@ -89,6 +89,19 @@ ProjectAndTodo.js -
     input the project name and creates a new project in the localStorage. confirms with 
     the user if the project is successfully added.
 
-   (working on this currently) -- View all projects page
+   (Done) Confirmed working 5/8/2025 -- View all projects page
     A grid/flex that cascades and displays all of the project names in a card format,
     similar to the todo card list. Will be scrollable if overflow.
+
+
+    (Done) Confirmed working 5/8/2025 -- Page switching logic in index.js 
+    Finished the logic for switching pages with the navigation links on the sidebar. Made a utility function 
+    that queries all of the inside html elements inside the content div and removes them so that the next page can re-render.
+    Since following the odin project's teachings, all of the modules do their own thing (single responsibility principle)
+    and so they all function independently from one another. 
+
+
+
+-- ** (finished project 5/8/2025) Notes: I am very proud that I finished this project. It was kind of complex with all of the modals I made, but 
+I feel like this is an application that does what it needs to do while also demonstrating the use of SOLID principles, webpack configs, npm scripts, 
+and npm library imports (date-fns). I gotta keep going, I am learning so much.
