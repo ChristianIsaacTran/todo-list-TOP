@@ -125,10 +125,29 @@ function CreateTodo() {
             //the chosen project. Return error message if invalid entry
             //or project not found.
             const appManage = ProjectAndTodo();
+            const modalData = new FormData(form);
 
+            //Check for empty/invalid form data entries
+            if (modalData.get("create-todo-title-value") === "" || 
+            modalData.get("create-todo-title-value") === " " ||
+            modalData.get("create-todo-description-value") === "" ||
+            modalData.get("create-todo-description-value") === " " ||
+            modalData.get("create-todo-date-value") === "" ||
+            modalData.get("create-todo-date-value") === " " ) {
+                return alert("Error: empty or invalid data entered. Try again.");
+            }
+
+            //Format date with date-fns format function
+            //in format YYYY-MM-DD, so use parseISO and THEN format for correct date
+            const tempDate = parseISO(modalData.get("create-todo-date-value")); 
+            const formattedDate = format(new Date(tempDate), "MM/dd/yyyy");
+
+            if(!appManage.createTodo(modalData.get("create-todo-title-value"), modalData.get("create-todo-description-value"), formattedDate, modalData.get("create-todo-priority-value"), modalData.get("create-todo-completion-value"), modalData.get("create-todo-project-choice"))) {
+                return;
+            }
 
             //Reset form after successful submission and notify user
-            alert("working?");
+            alert("createTodo successful");
             form.reset();
         });
 
