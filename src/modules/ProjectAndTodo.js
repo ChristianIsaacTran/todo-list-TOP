@@ -9,7 +9,8 @@ function ProjectAndTodo() {
     function createProject(projName) {
 
         if (localStorage.getItem(projName)) {
-            return console.log("given project name already exists, createProject not successful");
+            alert("Error: given project name already exists, createProject not successful");
+            return false;
         }
 
 
@@ -19,6 +20,8 @@ function ProjectAndTodo() {
 
         //Store object as a string/JSON in localStorage with JSON.stringify
         localStorage.setItem(`${projName}`, JSON.stringify(tempProj));
+        console.log("createProject successful");
+        return true;
     }
 
     function createDefaultProject() {
