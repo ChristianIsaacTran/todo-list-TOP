@@ -474,7 +474,7 @@ input[type="radio"] {
 .create-todo-inputs {
     display: grid;
     grid-template-columns: auto 1fr;
-    grid-template-rows: auto 300px repeat(3, auto);
+    grid-template-rows: auto 300px repeat(4, auto);
     row-gap: 10px;
     column-gap: 30px;
 }
