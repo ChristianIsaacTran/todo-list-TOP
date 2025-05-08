@@ -1,5 +1,5 @@
 import "./style.css";
-import  ProjectAndTodo from "./modules/ProjectAndTodo.js";
+import ProjectAndTodo from "./modules/ProjectAndTodo.js";
 import TodayQuest from "./modules/TodayQuest.js";
 import CreateProject from "./modules/CreateProject.js";
 import CreateTodo from "./modules/CreateTodo.js";
@@ -21,21 +21,60 @@ const createTodoPage = CreateTodo();
 const viewAllProjectsPage = ViewAllProjects();
 
 
-// appManage.createProject("project 1");
-// appManage.createProject("project 2");
-
-// appManage.createTodo("todo 1", "fewwe","fewewff","fwefweew","incomplete", "Default Project");
-// appManage.createTodo("todo 2", "fewwe","fewewff","fwefweew","incomplete", "Default Project");
-// appManage.createTodo("todo 4", "this is another description.","01/01/20","high","incomplete", "Default Project");
-
 //First time render, or page open render
-// todayQuestPage.generateTodayQuest();
+todayQuestPage.generateTodayQuest();
 
-// createProjectPage.generateCreateProject();
 
-// createTodoPage.generateCreateTodo();
+//Add page switching logic now that the web pages are built
 
-viewAllProjectsPage.generateViewAllProjects();
+//links to the different pages
+const todayQuestLink = document.querySelector(".today-quest-link");
+const createTodoLink = document.querySelector(".create-todo-link");
+const createProjectLink = document.querySelector(".create-project-link");
+const viewAllProjectsLink = document.querySelector(".view-all-projects-link");
+
+
+
+//clears all the content in the content div in HTML. Used for re-rendering 
+function clearContentPage() {
+    //Used for clearing and re-rendering the different web pages
+    const contentDiv = document.querySelector("#content"); //used to search inside content div
+
+    //Get all items inside contentDiv
+    const selectAllContent = contentDiv.querySelectorAll("*");
+
+    selectAllContent.forEach(function (htmlElement) {
+        htmlElement.remove();
+    });
+}
+
+//Event listeners for navigation
+todayQuestLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    clearContentPage();
+    todayQuestPage.generateTodayQuest();
+});
+
+createTodoLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    clearContentPage();
+    createProjectPage.generateCreateProject();
+});
+
+createProjectLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    clearContentPage();
+    createTodoPage.generateCreateTodo();
+});
+
+viewAllProjectsLink.addEventListener("click", function (e) {
+    e.preventDefault();
+    clearContentPage();
+    viewAllProjectsPage.generateViewAllProjects();
+});
+
+
+
 
 
 
