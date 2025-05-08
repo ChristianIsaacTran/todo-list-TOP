@@ -19,7 +19,7 @@ function CreateProject() {
         createProjectContainer.setAttribute("class","create-project-container");
         header.setAttribute("class","create-project-header");
         webpageTitle.setAttribute("class","create-project-title");
-        webpageTitle.textContent = "Create A Project";
+        webpageTitle.textContent = "Create A Quest";
         form.setAttribute("class","create-project-form");
         formInputContainer.setAttribute("class","create-project-inputs");
         buttonPointer.setAttribute("class","button-pointer");
@@ -33,7 +33,7 @@ function CreateProject() {
         formInput.setAttribute("placeholder","Max 20 characters...");
         submitButton.setAttribute("class","create-project-button");
         submitButton.setAttribute("type","submit");
-        submitButton.textContent = "Create Project";
+        submitButton.textContent = "Create Quest";
 
         //button event listeners
         submitButton.addEventListener("click", function(e) {

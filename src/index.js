@@ -58,13 +58,13 @@ todayQuestLink.addEventListener("click", function (e) {
 createTodoLink.addEventListener("click", function (e) {
     e.preventDefault();
     clearContentPage();
-    createProjectPage.generateCreateProject();
+    createTodoPage.generateCreateTodo();
 });
 
 createProjectLink.addEventListener("click", function (e) {
     e.preventDefault();
     clearContentPage();
-    createTodoPage.generateCreateTodo();
+    createProjectPage.generateCreateProject();
 });
 
 viewAllProjectsLink.addEventListener("click", function (e) {
