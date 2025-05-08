@@ -415,6 +415,7 @@ function TodayQuest() {
         titleValue.setAttribute("name", "title-value");
         titleValue.setAttribute("required", "");
         titleValue.setAttribute("maxlength", "20");
+        titleValue.setAttribute("placeholder", "Max 20 characters...");
         titleValue.setAttribute("value", todoObj.title);
         descriptionValue.setAttribute("id", "description-value");
         descriptionValue.setAttribute("name", "description-value");

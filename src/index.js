@@ -26,7 +26,7 @@ const createProjectPage = CreateProject();
 //First time render, or page open render
 // todayQuestPage.generateTodayQuest();
 
-createProjectPage.generateCreateProject();
+// createProjectPage.generateCreateProject();
 
 
 

@@ -454,3 +454,65 @@ input[type="radio"] {
     align-items: center;
     gap: 30px;
 }
+
+.create-todo-title {
+    font-size: 6rem;
+}
+
+.create-todo-header {
+    display: flex;
+    justify-content: center;
+}
+
+.create-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+
+.create-todo-inputs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 300px repeat(3, auto);
+    row-gap: 10px;
+    column-gap: 30px;
+}
+
+.create-todo-title-label,
+.create-todo-description-label,
+.create-todo-date-label,
+.create-todo-priority-label,
+.create-todo-completion-label,
+.create-todo-project-label {
+    font-size: 2.5rem;
+}
+
+.create-todo-incomplete-label,
+.create-todo-complete-label {
+    font-size: 2rem;
+}
+
+.create-todo-radio-group {
+    display: flex;
+    gap: 50px;
+}
+
+.create-todo-radio1,
+.create-todo-radio2 {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#create-todo-description-value {
+    border: 10px ridge grey;;
+    box-shadow: var(--inside-shadow);
+    border-radius: var(--round-border);
+    padding: 50px;
+}
+
+.create-todo-button-container {
+    display: flex;
+    justify-content: left;
+}

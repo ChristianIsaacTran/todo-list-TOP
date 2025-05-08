@@ -23,20 +23,48 @@
     </div>
     </div>
     <div id="content">
-        <!-- <div class="create-project-container">
-            <header class="create-project-header">
-                <h1 class="create-project-title">Create A Project</h1>
+        <div class="create-todo-container">
+            <header class="create-todo-header">
+                <h1 class="create-todo-title">Create A Todo</h1>
             </header>
-            <form class="create-project-form" action="" method="">
-                <div class="create-project-inputs">
-                    <label class="new-project-label" for="">New Project Name:</label>
-                    <input type="text" id="project-name-value">
+            <form class="create-todo-form" action="" method="">
+                <div class="create-todo-inputs">
+                    <label class="create-todo-title-label" for="create-todo-title-value">New Todo Title:</label>
+                    <input maxlength="20" placeholder="Max 20 characters..." type="text" id="create-todo-title-value" name="create-todo-title-value">
+                    <label class="create-todo-description-label" for="create-todo-description-value">Description:</label>
+                    <textarea name="create-todo-description-value" id="create-todo-description-value" placeholder="Max 275 characters..." maxlength="275"></textarea>
+                    <label class="create-todo-date-label" for="create-todo-date-value">Due Date:</label>
+                    <input class="create-todo-date-value" type="date">
+                    <label class="create-todo-priority-label" for="create-todo-priority-value">Priority:</label>
+                    <select name="create-todo-priority-value" id="create-todo-priority-value">
+                        <option value="low" selected>Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <label class="create-todo-completion-label" for="">Completion Status:</label>
+                    <div class="create-todo-radio-group">
+                        <div class="create-todo-radio1">
+                            <input checked type="radio" name="create-todo-completion-value" value="incomplete" id="create-todo-incomplete-value">
+                            <label class="create-todo-incomplete-label" for="create-todo-incomplete-value">Incomplete</label>
+                        </div>
+                        <div class="create-todo-radio2">
+                            <input type="radio" name="create-todo-completion-value" value="complete" id="create-todo-complete-value">
+                            <label class="create-todo-complete-label" for="create-todo-complete-value">Complete</label>
+                        </div>
+                    </div>
+                    <label class="create-todo-project-label" for="">Add to Project:</label>
+                    <input list="create-todo-project-list">
+                    <datalist id="create-todo-project-list">
+                        <option value="bruh">bruh</option>
+                    </datalist>
                 </div>
-                <div class="button-pointer">
-                    <button type="submit" class="create-project-button">Create Project</button>
+                <div class="create-todo-button-container">
+                    <div class="button-pointer">
+                        <button type="submit" class="create-todo-button">Create Todo</button>
+                    </div>
                 </div>
             </form>
-        </div> -->
+        </div>
     </div>
 </body>
 
