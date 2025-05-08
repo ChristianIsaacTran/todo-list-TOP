@@ -555,4 +555,9 @@ input[type="radio"] {
     flex: 0 1 auto;
     justify-content: center;
     align-items: center;
+    width: 500px;
+}
+
+.project-card-name {
+    font-size: 1.5rem;
 }

@@ -3,6 +3,7 @@ import  ProjectAndTodo from "./modules/ProjectAndTodo.js";
 import TodayQuest from "./modules/TodayQuest.js";
 import CreateProject from "./modules/CreateProject.js";
 import CreateTodo from "./modules/CreateTodo.js";
+import ViewAllProjects from "./modules/ViewAllProjects.js";
 
 //The entry point of the project. Import module 
 //pages here.
@@ -16,6 +17,8 @@ const todayQuestPage = TodayQuest();
 const createProjectPage = CreateProject();
 
 const createTodoPage = CreateTodo();
+
+const viewAllProjectsPage = ViewAllProjects();
 
 
 // appManage.createProject("project 1");
@@ -31,5 +34,8 @@ const createTodoPage = CreateTodo();
 // createProjectPage.generateCreateProject();
 
 // createTodoPage.generateCreateTodo();
+
+viewAllProjectsPage.generateViewAllProjects();
+
 
 
